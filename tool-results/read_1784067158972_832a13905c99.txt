@@ -1,0 +1,1216 @@
+     1→     1→     1→<!DOCTYPE html>
+     2→     2→     2→<html lang="en">
+     3→     3→     3→<head>
+     4→     4→     4→    <meta charset="UTF-8">
+     5→     5→     5→    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     6→     6→     6→    <title>Matin Roosta | Academic Portfolio</title>
+     7→     7→     7→    
+     8→     8→     8→    <!-- Favicon -->
+     9→     9→     9→    <link rel="icon" type="image/jpeg" href="images/favicon.jpg?v=1">
+    10→    10→    10→    <link rel="shortcut icon" type="image/jpeg" href="images/favicon.jpg?v=1">
+    11→    11→    11→    
+    12→    12→    12→    <!-- Google Fonts -->
+    13→    13→    13→    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    14→    14→    14→    
+    15→    15→    15→    <style>
+    16→    16→    16→        /* ========================================= */
+    17→    17→    17→        /* ----- متغیرهای رنگی (برای دارک مود) ----- */
+    18→    18→    18→        /* ========================================= */
+    19→    19→    19→        :root {
+    20→    20→    20→            --bg-color: #ffffff;
+    21→    21→    21→            --text-main: #111111;
+    22→    22→    22→            --text-muted: #444444;
+    23→    23→    23→            --text-light: #555555;
+    24→    24→    24→            --border-color: #111111;
+    25→    25→    25→            --header-bg: rgba(255, 255, 255, 0.98);
+    26→    26→    26→            --accent-blue: #2548ff;
+    27→    27→    27→            --card-bg: #ffffff;
+    28→    28→    28→            --card-hover-bg: #111111;
+    29→    29→    29→            --card-hover-text: #ffffff;
+    30→    30→    30→            --item-hover-bg: #fafafa;
+    31→    31→    31→            --abstract-border: #dddddd;
+    32→    32→    32→            --svg-fill: #111111;
+    33→    33→    33→        }
+    34→    34→    34→
+    35→    35→    35→        /* رنگ های حالت تاریک */
+    36→    36→    36→        body.dark-mode {
+    37→    37→    37→            --bg-color: #121212;
+    38→    38→    38→            --text-main: #f0f0f0;
+    39→    39→    39→            --text-muted: #cccccc;
+    40→    40→    40→            --text-light: #aaaaaa;
+    41→    41→    41→            --border-color: #f0f0f0;
+    42→    42→    42→            --header-bg: rgba(18, 18, 18, 0.98);
+    43→    43→    43→            --accent-blue: #6b8aff;
+    44→    44→    44→            --card-bg: #1e1e1e;
+    45→    45→    45→            --card-hover-bg: #f0f0f0;
+    46→    46→    46→            --card-hover-text: #111111;
+    47→    47→    47→            --item-hover-bg: #1a1a1a;
+    48→    48→    48→            --abstract-border: #333333;
+    49→    49→    49→            --svg-fill: #f0f0f0;
+    50→    50→    50→        }
+    51→    51→    51→
+    52→    52→    52→        html {
+    53→    53→    53→            scroll-behavior: smooth;
+    54→    54→    54→        }
+    55→    55→    55→
+    56→    56→    56→        * {
+    57→    57→    57→            margin: 0;
+    58→    58→    58→            padding: 0;
+    59→    59→    59→            box-sizing: border-box;
+    60→    60→    60→            font-family: 'Inter', sans-serif;
+    61→    61→    61→        }
+    62→    62→    62→
+    63→    63→    63→        body {
+    64→    64→    64→            background-color: var(--bg-color);
+    65→    65→    65→            color: var(--text-main);
+    66→    66→    66→            overflow-x: hidden;
+    67→    67→    67→            line-height: 1.6;
+    68→    68→    68→            transition: background-color 0.4s ease, color 0.4s ease;
+    69→    69→    69→        }
+    70→    70→    70→
+    71→    71→    71→        /* ========================================= */
+    72→    72→    72→        /* ----- Scroll-to-Top with Circular Progress ----- */
+    73→    73→    73→        /* ========================================= */
+    74→    74→    74→        .scroll-to-top-btn {
+    75→    75→    75→            position: fixed;
+    76→    76→    76→            bottom: 40px;
+    77→    77→    77→            right: 40px;
+    78→    78→    78→            width: 56px;
+    79→    79→    79→            height: 56px;
+    80→    80→    80→            border-radius: 50%;
+    81→    81→    81→            background-color: var(--card-bg);
+    82→    82→    82→            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    83→    83→    83→            display: flex;
+    84→    84→    84→            align-items: center;
+    85→    85→    85→            justify-content: center;
+    86→    86→    86→            z-index: 9999;
+    87→    87→    87→            cursor: pointer;
+    88→    88→    88→            opacity: 0;
+    89→    89→    89→            visibility: hidden;
+    90→    90→    90→            transform: translateY(20px) scale(0.9);
+    91→    91→    91→            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    92→    92→    92→        }
+    93→    93→    93→
+    94→    94→    94→        body.dark-mode .scroll-to-top-btn {
+    95→    95→    95→            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    96→    96→    96→            background-color: var(--card-bg);
+    97→    97→    97→        }
+    98→    98→    98→
+    99→    99→    99→        .scroll-to-top-btn.visible {
+   100→   100→   100→            opacity: 1;
+   101→   101→   101→            visibility: visible;
+   102→   102→   102→            transform: translateY(0) scale(1);
+   103→   103→   103→        }
+   104→   104→   104→
+   105→   105→   105→        .scroll-to-top-btn:hover {
+   106→   106→   106→            transform: translateY(-5px) scale(1.05);
+   107→   107→   107→            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+   108→   108→   108→        }
+   109→   109→   109→
+   110→   110→   110→        .progress-circle {
+   111→   111→   111→            position: absolute;
+   112→   112→   112→            top: 0;
+   113→   113→   113→            left: 0;
+   114→   114→   114→            width: 100%;
+   115→   115→   115→            height: 100%;
+   116→   116→   116→            transform: rotate(-90deg);
+   117→   117→   117→            pointer-events: none;
+   118→   118→   118→        }
+   119→   119→   119→
+   120→   120→   120→        .progress-bg {
+   121→   121→   121→            fill: var(--card-bg);
+   122→   122→   122→            stroke: var(--item-hover-bg);
+   123→   123→   123→            stroke-width: 6px;
+   124→   124→   124→            transition: stroke 0.4s ease, fill 0.4s ease;
+   125→   125→   125→        }
+   126→   126→   126→
+   127→   127→   127→        body.dark-mode .progress-bg {
+   128→   128→   128→            stroke: #2a2a2a;
+   129→   129→   129→        }
+   130→   130→   130→
+   131→   131→   131→        .progress-bar {
+   132→   132→   132→            fill: none;
+   133→   133→   133→            stroke: var(--accent-blue);
+   134→   134→   134→            stroke-width: 6px;
+   135→   135→   135→            stroke-linecap: round;
+   136→   136→   136→            stroke-dasharray: 283;
+   137→   137→   137→            stroke-dashoffset: 283;
+   138→   138→   138→            transition: stroke-dashoffset 0.1s linear, stroke 0.4s ease;
+   139→   139→   139→        }
+   140→   140→   140→
+   141→   141→   141→        .arrow-up {
+   142→   142→   142→            color: var(--text-main);
+   143→   143→   143→            display: flex;
+   144→   144→   144→            align-items: center;
+   145→   145→   145→            justify-content: center;
+   146→   146→   146→            transition: color 0.3s ease, transform 0.3s ease;
+   147→   147→   147→            z-index: 2;
+   148→   148→   148→            pointer-events: none;
+   149→   149→   149→        }
+   150→   150→   150→
+   151→   151→   151→        .scroll-to-top-btn:hover .arrow-up {
+   152→   152→   152→            color: var(--accent-blue);
+   153→   153→   153→            transform: translateY(-2px);
+   154→   154→   154→        }
+   155→   155→   155→
+   156→   156→   156→        /* ----- Header & Nav ----- */
+   157→   157→   157→        header {
+   158→   158→   158→            position: fixed;
+   159→   159→   159→            top: 0;
+   160→   160→   160→            left: 0;
+   161→   161→   161→            width: 100%;
+   162→   162→   162→            background-color: var(--header-bg);
+   163→   163→   163→            display: flex;
+   164→   164→   164→            justify-content: space-between;
+   165→   165→   165→            align-items: center;
+   166→   166→   166→            padding: 25px 50px;
+   167→   167→   167→            border-bottom: 2px solid var(--border-color);
+   168→   168→   168→            z-index: 1000;
+   169→   169→   169→            transition: background-color 0.4s ease, border-color 0.4s ease;
+   170→   170→   170→        }
+   171→   171→   171→
+   172→   172→   172→        .logo {
+   173→   173→   173→            font-size: 1.2rem;
+   174→   174→   174→            font-weight: 800;
+   175→   175→   175→            text-transform: uppercase;
+   176→   176→   176→            letter-spacing: 0.5px;
+   177→   177→   177→            color: var(--text-main);
+   178→   178→   178→        }
+   179→   179→   179→
+   180→   180→   180→        nav {
+   181→   181→   181→            display: flex;
+   182→   182→   182→            gap: 30px;
+   183→   183→   183→        }
+   184→   184→   184→
+   185→   185→   185→        nav a {
+   186→   186→   186→            text-decoration: none;
+   187→   187→   187→            color: var(--text-light);
+   188→   188→   188→            font-weight: 600;
+   189→   189→   189→            font-size: 0.95rem;
+   190→   190→   190→            transition: color 0.3s;
+   191→   191→   191→        }
+   192→   192→   192→
+   193→   193→   193→        nav a:hover {
+   194→   194→   194→            color: var(--text-main);
+   195→   195→   195→        }
+   196→   196→   196→
+   197→   197→   197→        .header-actions {
+   198→   198→   198→            display: flex;
+   199→   199→   199→            align-items: center;
+   200→   200→   200→            gap: 15px;
+   201→   201→   201→            margin-left: 30px;
+   202→   202→   202→        }
+   203→   203→   203→
+   204→   204→   204→        .lang-toggle {
+   205→   205→   205→            display: inline-flex;
+   206→   206→   206→            align-items: center;
+   207→   207→   207→            justify-content: center;
+   208→   208→   208→            width: 35px;
+   209→   209→   209→            height: 35px;
+   210→   210→   210→            border: 2px solid var(--border-color);
+   211→   211→   211→            border-radius: 50%;
+   212→   212→   212→            color: var(--text-main);
+   213→   213→   213→            text-decoration: none;
+   214→   214→   214→            font-weight: 800;
+   215→   215→   215→            font-size: 0.85rem;
+   216→   216→   216→            transition: all 0.3s;
+   217→   217→   217→        }
+   218→   218→   218→
+   219→   219→   219→        .lang-toggle:hover {
+   220→   220→   220→            background-color: var(--text-main);
+   221→   221→   221→            color: var(--bg-color);
+   222→   222→   222→        }
+   223→   223→   223→
+   224→   224→   224→        .theme-toggle {
+   225→   225→   225→            background: none;
+   226→   226→   226→            border: none;
+   227→   227→   227→            cursor: pointer;
+   228→   228→   228→            color: var(--text-main);
+   229→   229→   229→            display: flex;
+   230→   230→   230→            align-items: center;
+   231→   231→   231→            justify-content: center;
+   232→   232→   232→            width: 35px;
+   233→   233→   233→            height: 35px;
+   234→   234→   234→            border-radius: 50%;
+   235→   235→   235→            transition: all 0.3s;
+   236→   236→   236→        }
+   237→   237→   237→
+   238→   238→   238→        .theme-toggle:hover {
+   239→   239→   239→            background-color: var(--item-hover-bg);
+   240→   240→   240→        }
+   241→   241→   241→
+   242→   242→   242→        .theme-toggle svg {
+   243→   243→   243→            fill: none;
+   244→   244→   244→            stroke: var(--text-main);
+   245→   245→   245→            stroke-width: 2;
+   246→   246→   246→            stroke-linecap: round;
+   247→   247→   247→            stroke-linejoin: round;
+   248→   248→   248→            width: 20px;
+   249→   249→   249→            height: 20px;
+   250→   250→   250→            transition: stroke 0.4s ease;
+   251→   251→   251→        }
+   252→   252→   252→
+   253→   253→   253→        /* ----- Hero Section ----- */
+   254→   254→   254→        .hero {
+   255→   255→   255→            display: flex;
+   256→   256→   256→            height: 100vh;
+   257→   257→   257→            padding-top: 80px; 
+   258→   258→   258→            border-bottom: 2px solid var(--border-color);
+   259→   259→   259→            transition: border-color 0.4s ease;
+   260→   260→   260→        }
+   261→   261→   261→
+   262→   262→   262→        .content-left {
+   263→   263→   263→            flex: 1;
+   264→   264→   264→            padding: 80px 80px 80px 50px;
+   265→   265→   265→            display: flex;
+   266→   266→   266→            flex-direction: column;
+   267→   267→   267→            justify-content: center;
+   268→   268→   268→            border-right: 2px solid var(--border-color);
+   269→   269→   269→            transition: border-color 0.4s ease;
+   270→   270→   270→        }
+   271→   271→   271→
+   272→   272→   272→        .badge {
+   273→   273→   273→            background-color: var(--text-main);
+   274→   274→   274→            color: var(--bg-color);
+   275→   275→   275→            font-size: 0.75rem;
+   276→   276→   276→            font-weight: 600;
+   277→   277→   277→            text-transform: uppercase;
+   278→   278→   278→            letter-spacing: 1px;
+   279→   279→   279→            padding: 8px 12px;
+   280→   280→   280→            align-self: flex-start;
+   281→   281→   281→            margin-bottom: 30px;
+   282→   282→   282→            transition: background-color 0.4s ease, color 0.4s ease;
+   283→   283→   283→        }
+   284→   284→   284→
+   285→   285→   285→        h1 {
+   286→   286→   286→            font-size: 4.5rem;
+   287→   287→   287→            line-height: 1.1;
+   288→   288→   288→            font-weight: 800;
+   289→   289→   289→            letter-spacing: -1.5px;
+   290→   290→   290→            margin-bottom: 25px;
+   291→   291→   291→        }
+   292→   292→   292→
+   293→   293→   293→        h1 .highlight {
+   294→   294→   294→            color: var(--accent-blue);
+   295→   295→   295→            transition: color 0.4s ease;
+   296→   296→   296→        }
+   297→   297→   297→
+   298→   298→   298→        p.description {
+   299→   299→   299→            font-size: 1.15rem;
+   300→   300→   300→            color: var(--text-muted);
+   301→   301→   301→            line-height: 1.8;
+   302→   302→   302→            max-width: 90%;
+   303→   303→   303→            margin-bottom: 40px;
+   304→   304→   304→            transition: color 0.4s ease;
+   305→   305→   305→        }
+   306→   306→   306→
+   307→   307→   307→        .buttons {
+   308→   308→   308→            display: flex;
+   309→   309→   309→            gap: 15px;
+   310→   310→   310→            flex-wrap: wrap;
+   311→   311→   311→        }
+   312→   312→   312→
+   313→   313→   313→        .btn {
+   314→   314→   314→            padding: 15px 25px;
+   315→   315→   315→            font-size: 1rem;
+   316→   316→   316→            font-weight: 600;
+   317→   317→   317→            text-decoration: none;
+   318→   318→   318→            display: inline-flex;
+   319→   319→   319→            align-items: center;
+   320→   320→   320→            justify-content: center;
+   321→   321→   321→            transition: all 0.3s ease;
+   322→   322→   322→            cursor: pointer;
+   323→   323→   323→        }
+   324→   324→   324→
+   325→   325→   325→        .btn-primary {
+   326→   326→   326→            background-color: var(--text-main);
+   327→   327→   327→            color: var(--bg-color);
+   328→   328→   328→            border: 2px solid var(--text-main);
+   329→   329→   329→        }
+   330→   330→   330→
+   331→   331→   331→        .btn-primary:hover {
+   332→   332→   332→            transform: translateY(-6px);
+   333→   333→   333→            box-shadow: 0 15px 30px rgba(37, 72, 255, 0.4);
+   334→   334→   334→            background-color: var(--text-main);
+   335→   335→   335→            border-color: var(--text-main);
+   336→   336→   336→        }
+   337→   337→   337→
+   338→   338→   338→        .btn-primary span {
+   339→   339→   339→            margin-left: 8px;
+   340→   340→   340→            font-size: 1.2rem;
+   341→   341→   341→        }
+   342→   342→   342→
+   343→   343→   343→        .btn-secondary {
+   344→   344→   344→            background-color: transparent;
+   345→   345→   345→            color: var(--text-main);
+   346→   346→   346→            border: 2px solid var(--border-color);
+   347→   347→   347→            gap: 10px;
+   348→   348→   348→        }
+   349→   349→   349→
+   350→   350→   350→        .btn-secondary:hover {
+   351→   351→   351→            background-color: var(--item-hover-bg);
+   352→   352→   352→        }
+   353→   353→   353→
+   354→   354→   354→        /* ----- Image Right ----- */
+   355→   355→   355→        .image-right {
+   356→   356→   356→            flex: 1;
+   357→   357→   357→            background-image: url('images/profile.jpg'); 
+   358→   358→   358→            background-size: cover;
+   359→   359→   359→            background-position: center top;
+   360→   360→   360→            filter: grayscale(100%); 
+   361→   361→   361→            display: flex;
+   362→   362→   362→            align-items: flex-end;
+   363→   363→   363→        }
+   364→   364→   364→
+   365→   365→   365→        .image-caption {
+   366→   366→   366→            width: 100%;
+   367→   367→   367→            background-color: rgba(30, 30, 35, 0.92); 
+   368→   368→   368→            color: #fff; 
+   369→   369→   369→            padding: 10px 30px;
+   370→   370→   370→            font-size: 0.9rem;
+   371→   371→   371→            font-weight: 400;
+   372→   372→   372→            letter-spacing: 0.5px;
+   373→   373→   373→            border-top: 1px solid rgba(255,255,255,0.1);
+   374→   374→   374→        }
+   375→   375→   375→
+   376→   376→   376→        /* ----- General Sections ----- */
+   377→   377→   377→        .container {
+   378→   378→   378→            max-width: 1200px;
+   379→   379→   379→            margin: auto;
+   380→   380→   380→            padding: 100px 50px;
+   381→   381→   381→        }
+   382→   382→   382→
+   383→   383→   383→        .section-title {
+   384→   384→   384→            font-size: 3rem;
+   385→   385→   385→            font-weight: 800;
+   386→   386→   386→            letter-spacing: -1px;
+   387→   387→   387→            margin-bottom: 50px;
+   388→   388→   388→            border-bottom: 2px solid var(--border-color);
+   389→   389→   389→            padding-bottom: 20px;
+   390→   390→   390→            display: inline-block;
+   391→   391→   391→            transition: border-color 0.4s ease;
+   392→   392→   392→        }
+   393→   393→   393→
+   394→   394→   394→        /* ----- Research Section ----- */
+   395→   395→   395→        #research {
+   396→   396→   396→            padding: 0;
+   397→   397→   397→        }
+   398→   398→   398→
+   399→   399→   399→        .research-item {
+   400→   400→   400→            display: flex;
+   401→   401→   401→            padding: 80px 50px;
+   402→   402→   402→            border-bottom: 1px solid var(--abstract-border);
+   403→   403→   403→            gap: 50px;
+   404→   404→   404→            transition: background-color 0.4s;
+   405→   405→   405→        }
+   406→   406→   406→
+   407→   407→   407→        .research-item:hover {
+   408→   408→   408→            background-color: var(--item-hover-bg);
+   409→   409→   409→        }
+   410→   410→   410→
+   411→   411→   411→        .research-left {
+   412→   412→   412→            flex: 1;
+   413→   413→   413→        }
+   414→   414→   414→
+   415→   415→   415→        .research-num {
+   416→   416→   416→            color: var(--accent-blue);
+   417→   417→   417→            font-family: monospace;
+   418→   418→   418→            font-size: 0.9rem;
+   419→   419→   419→            letter-spacing: 1px;
+   420→   420→   420→            display: block;
+   421→   421→   421→            margin-bottom: 15px;
+   422→   422→   422→            text-transform: uppercase;
+   423→   423→   423→            transition: color 0.4s ease;
+   424→   424→   424→        }
+   425→   425→   425→
+   426→   426→   426→        .research-left h3 {
+   427→   427→   427→            font-size: 2.2rem;
+   428→   428→   428→            font-weight: 800;
+   429→   429→   429→            letter-spacing: -1px;
+   430→   430→   430→        }
+   431→   431→   431→
+   432→   432→   432→        .research-right {
+   433→   433→   433→            flex: 2;
+   434→   434→   434→        }
+   435→   435→   435→
+   436→   436→   436→        .research-right p {
+   437→   437→   437→            font-size: 1.15rem;
+   438→   438→   438→            color: var(--text-muted);
+   439→   439→   439→            margin-bottom: 25px;
+   440→   440→   440→            line-height: 1.8;
+   441→   441→   441→            transition: color 0.4s ease;
+   442→   442→   442→        }
+   443→   443→   443→
+   444→   444→   444→        .keyword-tags {
+   445→   445→   445→            display: flex;
+   446→   446→   446→            gap: 15px;
+   447→   447→   447→            flex-wrap: wrap;
+   448→   448→   448→        }
+   449→   449→   449→
+   450→   450→   450→        .tag {
+   451→   451→   451→            border: 2px solid var(--border-color);
+   452→   452→   452→            padding: 10px 20px;
+   453→   453→   453→            font-size: 0.95rem;
+   454→   454→   454→            font-weight: 600;
+   455→   455→   455→            color: var(--text-main);
+   456→   456→   456→            transition: all 0.3s;
+   457→   457→   457→            background: transparent;
+   458→   458→   458→        }
+   459→   459→   459→
+   460→   460→   460→        .tag:hover {
+   461→   461→   461→            background-color: var(--text-main);
+   462→   462→   462→            color: var(--bg-color);
+   463→   463→   463→            transform: translateY(-2px);
+   464→   464→   464→        }
+   465→   465→   465→
+   466→   466→   466→        /* ----- Publications Section ----- */
+   467→   467→   467→        .pub-container {
+   468→   468→   468→            display: flex;
+   469→   469→   469→            flex-direction: column;
+   470→   470→   470→            gap: 30px;
+   471→   471→   471→        }
+   472→   472→   472→
+   473→   473→   473→        .pub {
+   474→   474→   474→            background: var(--card-bg);
+   475→   475→   475→            border: 2px solid var(--border-color);
+   476→   476→   476→            padding: 35px 40px;
+   477→   477→   477→            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+   478→   478→   478→            position: relative;
+   479→   479→   479→            overflow: hidden;
+   480→   480→   480→            cursor: pointer;
+   481→   481→   481→        }
+   482→   482→   482→        
+   483→   483→   483→        .pub:hover {
+   484→   484→   484→            border-color: var(--accent-blue);
+   485→   485→   485→            box-shadow: 0 20px 40px rgba(37, 72, 255, 0.1);
+   486→   486→   486→            transform: translateY(-5px);
+   487→   487→   487→        }
+   488→   488→   488→
+   489→   489→   489→        .pub-header {
+   490→   490→   490→            display: flex;
+   491→   491→   491→            justify-content: space-between;
+   492→   492→   492→            align-items: flex-start;
+   493→   493→   493→            gap: 20px;
+   494→   494→   494→            margin-bottom: 10px;
+   495→   495→   495→        }
+   496→   496→   496→
+   497→   497→   497→        .pub h4 {
+   498→   498→   498→            font-size: 1.3rem;
+   499→   499→   499→            font-weight: 700;
+   500→   500→   500→            margin-bottom: 0;
+   501→   501→   501→            line-height: 1.5;
+   502→   502→   502→            color: var(--text-main);
+   503→   503→   503→            transition: color 0.3s;
+   504→   504→   504→            flex: 1;
+   505→   505→   505→        }
+   506→   506→   506→
+   507→   507→   507→        .pub:hover h4 {
+   508→   508→   508→            color: var(--accent-blue);
+   509→   509→   509→        }
+   510→   510→   510→
+   511→   511→   511→        .doi-btn {
+   512→   512→   512→            display: inline-flex;
+   513→   513→   513→            align-items: center;
+   514→   514→   514→            gap: 8px;
+   515→   515→   515→            color: var(--text-main);
+   516→   516→   516→            text-decoration: none;
+   517→   517→   517→            font-weight: 600;
+   518→   518→   518→            font-size: 0.95rem;
+   519→   519→   519→            padding: 8px 16px;
+   520→   520→   520→            border: 1px solid var(--border-color);
+   521→   521→   521→            transition: all 0.3s;
+   522→   522→   522→            flex-shrink: 0;
+   523→   523→   523→            white-space: nowrap;
+   524→   524→   524→            position: relative;
+   525→   525→   525→            z-index: 10;
+   526→   526→   526→        }
+   527→   527→   527→        
+   528→   528→   528→        .doi-btn:hover {
+   529→   529→   529→            background-color: var(--accent-blue);
+   530→   530→   530→            color: #fff;
+   531→   531→   531→            border-color: var(--accent-blue);
+   532→   532→   532→        }
+   533→   533→   533→
+   534→   534→   534→        .pub-abstract {
+   535→   535→   535→            display: none;
+   536→   536→   536→        }
+   537→   537→   537→
+   538→   538→   538→        .pub-footer {
+   539→   539→   539→            display: flex;
+   540→   540→   540→            justify-content: space-between;
+   541→   541→   541→            align-items: center;
+   542→   542→   542→            margin-top: 25px;
+   543→   543→   543→        }
+   544→   544→   544→
+   545→   545→   545→        .pub-date {
+   546→   546→   546→            font-weight: 600;
+   547→   547→   547→            color: var(--text-light);
+   548→   548→   548→            font-size: 0.9rem;
+   549→   549→   549→            letter-spacing: 1px;
+   550→   550→   550→        }
+   551→   551→   551→
+   552→   552→   552→        /* ========================================= */
+   553→   553→   553→        /* ----- Academic Modal / Pop-up Styles ---- */
+   554→   554→   554→        /* ========================================= */
+   555→   555→   555→        .modal {
+   556→   556→   556→            visibility: hidden; 
+   557→   557→   557→            position: fixed; 
+   558→   558→   558→            z-index: 2000; 
+   559→   559→   559→            left: 0;
+   560→   560→   560→            top: 0;
+   561→   561→   561→            width: 100%; 
+   562→   562→   562→            height: 100%; 
+   563→   563→   563→            background-color: rgba(0, 0, 0, 0.75); /* کمی تیره‌تر برای تمرکز بهتر */
+   564→   564→   564→            backdrop-filter: blur(5px);
+   565→   565→   565→            opacity: 0;
+   566→   566→   566→            transition: opacity 0.4s ease, visibility 0.4s ease;
+   567→   567→   567→            display: flex;
+   568→   568→   568→            align-items: center;
+   569→   569→   569→            justify-content: center;
+   570→   570→   570→            padding: 20px;
+   571→   571→   571→        }
+   572→   572→   572→
+   573→   573→   573→        .modal.show {
+   574→   574→   574→            visibility: visible;
+   575→   575→   575→            opacity: 1;
+   576→   576→   576→        }
+   577→   577→   577→
+   578→   578→   578→        .modal-content {
+   579→   579→   579→            background-color: var(--card-bg);
+   580→   580→   580→            border: 1px solid var(--abstract-border); /* بردر ظریف‌تر */
+   581→   581→   581→            border-radius: 8px; /* لبه‌های نرم برای حس مدرن */
+   582→   582→   582→            width: 100%;
+   583→   583→   583→            max-width: 850px;
+   584→   584→   584→            max-height: 90vh; /* حداکثر ارتفاع برای جلوگیری از خروج از صفحه */
+   585→   585→   585→            display: flex;
+   586→   586→   586→            flex-direction: column;
+   587→   587→   587→            position: relative;
+   588→   588→   588→            transform: translateY(20px) scale(0.98);
+   589→   589→   589→            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), background-color 0.4s ease, border-color 0.4s ease;
+   590→   590→   590→            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+   591→   591→   591→            overflow: hidden; /* مخفی کردن بیرون زدگی، اسکرول در بادی انجام میشود */
+   592→   592→   592→        }
+   593→   593→   593→
+   594→   594→   594→        body.dark-mode .modal-content {
+   595→   595→   595→            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+   596→   596→   596→            border-color: var(--border-color);
+   597→   597→   597→        }
+   598→   598→   598→
+   599→   599→   599→        .modal.show .modal-content {
+   600→   600→   600→            transform: translateY(0) scale(1);
+   601→   601→   601→        }
+   602→   602→   602→
+   603→   603→   603→        /* بخش هدر مودال */
+   604→   604→   604→        .modal-header {
+   605→   605→   605→            padding: 25px 40px;
+   606→   606→   606→            border-bottom: 1px solid var(--abstract-border);
+   607→   607→   607→            display: flex;
+   608→   608→   608→            justify-content: space-between;
+   609→   609→   609→            align-items: center;
+   610→   610→   610→            background-color: var(--item-hover-bg);
+   611→   611→   611→        }
+   612→   612→   612→
+   613→   613→   613→        .modal-header h3 {
+   614→   614→   614→            font-size: 1.15rem;
+   615→   615→   615→            font-weight: 800;
+   616→   616→   616→            text-transform: uppercase;
+   617→   617→   617→            letter-spacing: 1.5px;
+   618→   618→   618→            color: var(--text-main);
+   619→   619→   619→            margin: 0;
+   620→   620→   620→            display: flex;
+   621→   621→   621→            align-items: center;
+   622→   622→   622→            gap: 12px;
+   623→   623→   623→        }
+   624→   624→   624→
+   625→   625→   625→        .modal-header h3 svg {
+   626→   626→   626→            width: 22px;
+   627→   627→   627→            height: 22px;
+   628→   628→   628→            stroke: var(--accent-blue);
+   629→   629→   629→        }
+   630→   630→   630→
+   631→   631→   631→        /* دکمه بستن حرفه‌ای */
+   632→   632→   632→        .close-modal {
+   633→   633→   633→            color: var(--text-muted);
+   634→   634→   634→            width: 40px;
+   635→   635→   635→            height: 40px;
+   636→   636→   636→            display: flex;
+   637→   637→   637→            align-items: center;
+   638→   638→   638→            justify-content: center;
+   639→   639→   639→            border-radius: 50%;
+   640→   640→   640→            cursor: pointer;
+   641→   641→   641→            transition: all 0.3s ease;
+   642→   642→   642→            background: transparent;
+   643→   643→   643→        }
+   644→   644→   644→
+   645→   645→   645→        .close-modal:hover {
+   646→   646→   646→            color: var(--bg-color);
+   647→   647→   647→            background-color: var(--text-main);
+   648→   648→   648→            transform: rotate(90deg); /* افکت چرخش جذاب */
+   649→   649→   649→        }
+   650→   650→   650→
+   651→   651→   651→        /* بخش متن چکیده */
+   652→   652→   652→        .modal-body {
+   653→   653→   653→            padding: 40px;
+   654→   654→   654→            overflow-y: auto; /* اسکرول داخلی */
+   655→   655→   655→            color: var(--text-light);
+   656→   656→   656→            font-size: 1.05rem; /* سایز فونت مناسب خواندن */
+   657→   657→   657→            line-height: 1.85; /* فاصله خطوط استاندارد مقالات */
+   658→   658→   658→            text-align: justify;
+   659→   659→   659→        }
+   660→   660→   660→
+   661→   661→   661→        /* استایل اسکرول‌بار اختصاصی داخل مودال */
+   662→   662→   662→        .modal-body::-webkit-scrollbar {
+   663→   663→   663→            width: 8px;
+   664→   664→   664→        }
+   665→   665→   665→        .modal-body::-webkit-scrollbar-track {
+   666→   666→   666→            background: var(--bg-color);
+   667→   667→   667→        }
+   668→   668→   668→        .modal-body::-webkit-scrollbar-thumb {
+   669→   669→   669→            background: var(--abstract-border);
+   670→   670→   670→            border-radius: 4px;
+   671→   671→   671→        }
+   672→   672→   672→        .modal-body::-webkit-scrollbar-thumb:hover {
+   673→   673→   673→            background: var(--accent-blue);
+   674→   674→   674→        }
+   675→   675→   675→
+   676→   676→   676→        /* استایل کلمات کلیدی داخل چکیده (Objective, Methods, ...) */
+   677→   677→   677→        .modal-body p {
+   678→   678→   678→            margin-bottom: 20px;
+   679→   679→   679→        }
+   680→   680→   680→        
+   681→   681→   681→        .modal-body p:last-child {
+   682→   682→   682→            margin-bottom: 0;
+   683→   683→   683→        }
+   684→   684→   684→
+   685→   685→   685→        .modal-body strong {
+   686→   686→   686→            color: var(--text-main);
+   687→   687→   687→            font-weight: 800;
+   688→   688→   688→            display: inline-block;
+   689→   689→   689→            margin-right: 5px;
+   690→   690→   690→        }
+   691→   691→   691→
+   692→   692→   692→        /* ----- Teaching Section ----- */
+   693→   693→   693→        .cards {
+   694→   694→   694→            display: grid;
+   695→   695→   695→            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   696→   696→   696→            gap: 25px;
+   697→   697→   697→        }
+   698→   698→   698→
+   699→   699→   699→        .card {
+   700→   700→   700→            background: var(--card-bg);
+   701→   701→   701→            padding: 40px 30px;
+   702→   702→   702→            border: 2px solid var(--border-color);
+   703→   703→   703→            transition: all 0.3s;
+   704→   704→   704→            text-align: center;
+   705→   705→   705→        }
+   706→   706→   706→
+   707→   707→   707→        .card:hover {
+   708→   708→   708→            background: var(--card-hover-bg);
+   709→   709→   709→            color: var(--card-hover-text);
+   710→   710→   710→            transform: translate(-5px, -5px);
+   711→   711→   711→            box-shadow: 5px 5px 0px var(--accent-blue);
+   712→   712→   712→            border-color: var(--card-hover-bg);
+   713→   713→   713→        }
+   714→   714→   714→
+   715→   715→   715→        .card h3 {
+   716→   716→   716→            font-size: 1.3rem;
+   717→   717→   717→            font-weight: 700;
+   718→   718→   718→        }
+   719→   719→   719→
+   720→   720→   720→        .card:hover h3 {
+   721→   721→   721→            color: var(--card-hover-text);
+   722→   722→   722→        }
+   723→   723→   723→
+   724→   724→   724→        /* ----- Footer ----- */
+   725→   725→   725→        footer {
+   726→   726→   726→            border-top: 2px solid var(--border-color);
+   727→   727→   727→            padding: 80px 50px;
+   728→   728→   728→            display: flex;
+   729→   729→   729→            justify-content: space-between;
+   730→   730→   730→            gap: 50px;
+   731→   731→   731→            background-color: var(--bg-color);
+   732→   732→   732→            transition: border-color 0.4s ease, background-color 0.4s ease;
+   733→   733→   733→        }
+   734→   734→   734→
+   735→   735→   735→        .footer-col {
+   736→   736→   736→            display: flex;
+   737→   737→   737→            flex-direction: column;
+   738→   738→   738→            gap: 15px;
+   739→   739→   739→        }
+   740→   740→   740→
+   741→   741→   741→        .brand-col {
+   742→   742→   742→            flex: 2;
+   743→   743→   743→        }
+   744→   744→   744→
+   745→   745→   745→        .brand-col h2 {
+   746→   746→   746→            font-size: 1.5rem;
+   747→   747→   747→            font-weight: 800;
+   748→   748→   748→            text-transform: uppercase;
+   749→   749→   749→            margin-bottom: 10px;
+   750→   750→   750→            letter-spacing: 0.5px;
+   751→   751→   751→        }
+   752→   752→   752→
+   753→   753→   753→        .brand-col p {
+   754→   754→   754→            color: var(--text-light);
+   755→   755→   755→            font-size: 1.1rem;
+   756→   756→   756→            max-width: 400px;
+   757→   757→   757→            text-align: justify; 
+   758→   758→   758→        }
+   759→   759→   759→
+   760→   760→   760→        .nav-col, .social-col {
+   761→   761→   761→            flex: 1;
+   762→   762→   762→        }
+   763→   763→   763→
+   764→   764→   764→        .footer-heading {
+   765→   765→   765→            color: var(--accent-blue);
+   766→   766→   766→            font-weight: 700;
+   767→   767→   767→            letter-spacing: 1.5px;
+   768→   768→   768→            text-transform: uppercase;
+   769→   769→   769→            font-size: 0.9rem;
+   770→   770→   770→            margin-bottom: 10px;
+   771→   771→   771→            transition: color 0.4s ease;
+   772→   772→   772→        }
+   773→   773→   773→
+   774→   774→   774→        .footer-col a {
+   775→   775→   775→            color: var(--text-main);
+   776→   776→   776→            text-decoration: none;
+   777→   777→   777→            font-weight: 600;
+   778→   778→   778→            font-size: 1.1rem;
+   779→   779→   779→            transition: color 0.3s;
+   780→   780→   780→            display: inline-flex;
+   781→   781→   781→            align-items: center;
+   782→   782→   782→            gap: 10px;
+   783→   783→   783→        }
+   784→   784→   784→
+   785→   785→   785→        .footer-col a svg {
+   786→   786→   786→            transition: fill 0.3s;
+   787→   787→   787→            fill: var(--svg-fill);
+   788→   788→   788→        }
+   789→   789→   789→
+   790→   790→   790→        .footer-col a:hover {
+   791→   791→   791→            color: var(--accent-blue);
+   792→   792→   792→        }
+   793→   793→   793→
+   794→   794→   794→        .footer-col a:hover svg {
+   795→   795→   795→            fill: var(--accent-blue);
+   796→   796→   796→        }
+   797→   797→   797→
+   798→   798→   798→        /* ----- Sub Footer ----- */
+   799→   799→   799→        .sub-footer {
+   800→   800→   800→            padding: 25px 50px;
+   801→   801→   801→            display: flex;
+   802→   802→   802→            justify-content: space-between;
+   803→   803→   803→            align-items: center;
+   804→   804→   804→            border-top: 1px solid var(--abstract-border);
+   805→   805→   805→            background-color: var(--bg-color);
+   806→   806→   806→            color: var(--text-light);
+   807→   807→   807→            font-size: 0.95rem;
+   808→   808→   808→            font-weight: 600;
+   809→   809→   809→            transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+   810→   810→   810→        }
+   811→   811→   811→
+   812→   812→   812→        /* ----- Responsive (Mobile) ----- */
+   813→   813→   813→        @media (max-width: 900px) {
+   814→   814→   814→            header { padding: 15px 20px; }
+   815→   815→   815→            .nav-links { display: none; } 
+   816→   816→   816→            
+   817→   817→   817→            .hero { flex-direction: column; height: auto; padding-top: 70px; }
+   818→   818→   818→            .content-left { padding: 40px 20px; border-right: none; border-bottom: 2px solid var(--border-color); }
+   819→   819→   819→            
+   820→   820→   820→            h1 { font-size: 2.8rem; margin-bottom: 15px; }
+   821→   821→   821→            p.description { font-size: 1rem; margin-bottom: 30px; }
+   822→   822→   822→            
+   823→   823→   823→            .buttons { flex-direction: column; width: 100%; gap: 10px; }
+   824→   824→   824→            .btn { width: 100%; }
+   825→   825→   825→            
+   826→   826→   826→            .image-right { width: 100%; min-height: 450px; background-position: center 20%; }
+   827→   827→   827→            .image-caption { padding: 15px 20px; font-size: 0.9rem; text-align: center; }
+   828→   828→   828→            
+   829→   829→   829→            .container { padding: 40px 20px; }
+   830→   830→   830→            .section-title { font-size: 2.2rem; margin-bottom: 30px; }
+   831→   831→   831→            
+   832→   832→   832→            .research-item { flex-direction: column; padding: 40px 20px; gap: 15px; }
+   833→   833→   833→            .research-left h3 { font-size: 1.8rem; }
+   834→   834→   834→            .research-right p { font-size: 1rem; margin-bottom: 15px;}
+   835→   835→   835→            .tag { font-size: 0.85rem; padding: 8px 15px; }
+   836→   836→   836→            
+   837→   837→   837→            .pub { padding: 25px 20px; }
+   838→   838→   838→            .pub-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+   839→   839→   839→            .pub h4 { font-size: 1.1rem; }
+   840→   840→   840→            .pub-footer { flex-direction: column; align-items: flex-start; gap: 15px; }
+   841→   841→   841→            
+   842→   842→   842→            footer { flex-direction: column; padding: 40px 20px; gap: 40px; }
+   843→   843→   843→            .brand-col p { font-size: 1rem; }
+   844→   844→   844→            
+   845→   845→   845→            .sub-footer { flex-direction: column; text-align: center; gap: 15px; padding: 25px 20px; }
+   846→   846→   846→            
+   847→   847→   847→            /* Mobile adjustments for Modal */
+   848→   848→   848→            .modal-header { padding: 20px; }
+   849→   849→   849→            .modal-body { padding: 20px; font-size: 1rem; }
+   850→   850→   850→        }
+   851→   851→   851→    </style>
+   852→   852→   852→</head>
+   853→   853→   853→<body>
+   854→   854→   854→
+   855→   855→   855→    <div class="scroll-to-top-btn" id="scrollToTopBtn" title="Scroll to Top">
+   856→   856→   856→        <svg class="progress-circle" viewBox="0 0 100 100">
+   857→   857→   857→            <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
+   858→   858→   858→            <circle class="progress-bar" cx="50" cy="50" r="45" id="progressCircleBar"></circle>
+   859→   859→   859→        </svg>
+   860→   860→   860→        <div class="arrow-up">
+   861→   861→   861→            <svg viewBox="0 0 24 24" width="22" height="22">
+   862→   862→   862→                <path d="M18 15l-6-6-6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+   863→   863→   863→            </svg>
+   864→   864→   864→        </div>
+   865→   865→   865→    </div>
+   866→   866→   866→
+   867→   867→   867→    <!-- Header -->
+   868→   868→   868→    <header>
+   869→   869→   869→        <div class="logo">Matin Roosta</div>
+   870→   870→   870→        <div style="display: flex; align-items: center;">
+   871→   871→   871→            <nav class="nav-links">
+   872→   872→   872→                <a href="research.html">Research</a>
+   873→   873→   873→                <a href="#publications">Publications</a>
+   874→   874→   874→                <a href="#teaching">Teaching</a>
+   875→   875→   875→            </nav>
+   876→   876→   876→            <div class="header-actions">
+   877→   877→   877→                <button class="theme-toggle" id="themeToggleBtn" title="Toggle Dark Mode">
+   878→   878→   878→                    <svg id="themeIcon" viewBox="0 0 24 24">
+   879→   879→   879→                        <path id="themeIconPath" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+   880→   880→   880→                    </svg>
+   881→   881→   881→                </button>
+   882→   882→   882→                <a href="index-fa.html" class="lang-toggle" title="Persian">FA</a>
+   883→   883→   883→            </div>
+   884→   884→   884→        </div>
+   885→   885→   885→    </header>
+   886→   886→   886→
+   887→   887→   887→    <!-- Hero Section -->
+   888→   888→   888→    <section class="hero">
+   889→   889→   889→        <div class="content-left">
+   890→   890→   890→            <div class="badge">Nurse, Researcher, Faculty Member</div>
+   891→   891→   891→            
+   892→   892→   892→            <h1>The science of <span class="highlight">care</span><br>and evidence.</h1>
+   893→   893→   893→            
+   894→   894→   894→            <p class="description">
+   895→   895→   895→                I am a nurse, educator, and researcher passionate about patient care, nursing education, and the application of artificial intelligence to advance healthcare and improve patient outcomes.
+   896→   896→   896→            </p>
+   897→   897→   897→            
+   898→   898→   898→            <div class="buttons">
+   899→   899→   899→                <a href="https://scholar.google.com/citations?hl=en&user=ZGdhd8QAAAAJ" target="_blank" class="btn btn-primary">
+   900→   900→   900→                    Google Scholar <span>&rarr;</span>
+   901→   901→   901→                </a>
+   902→   902→   902→                
+   903→   903→   903→                <a href="Matin_Roosta_CV.pdf" target="_blank" class="btn btn-secondary">
+   904→   904→   904→                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   905→   905→   905→                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+   906→   906→   906→                        <polyline points="14 2 14 8 20 8"></polyline>
+   907→   907→   907→                        <line x1="16" y1="13" x2="8" y2="13"></line>
+   908→   908→   908→                        <line x1="16" y1="17" x2="8" y2="17"></line>
+   909→   909→   909→                        <line x1="10" y1="9" x2="8" y2="9"></line>
+   910→   910→   910→                    </svg>
+   911→   911→   911→                    CV
+   912→   912→   912→                </a>
+   913→   913→   913→            </div>
+   914→   914→   914→        </div>
+   915→   915→   915→
+   916→   916→   916→        <div class="image-right">
+   917→   917→   917→            <div class="image-caption">
+   918→   918→   918→                Matin Roosta-ye Abkenar — Faculty Member of Nursing and Midwifery school
+   919→   919→   919→            </div>
+   920→   920→   920→        </div>
+   921→   921→   921→    </section>
+   922→   922→   922→
+   923→   923→   923→    <!-- Research Section -->
+   924→   924→   924→    <section id="research">
+   925→   925→   925→        <div class="research-item">
+   926→   926→   926→            <div class="research-left">
+   927→   927→   927→                <span class="research-num">01 / CARE</span>
+   928→   928→   928→                <h3>Nursing Care</h3>
+   929→   929→   929→            </div>
+   930→   930→   930→            <div class="research-right">
+   931→   931→   931→                <p>Focusing on the advancement of critical and emergency patient management. I investigate protocols and practices that enhance recovery outcomes, optimize clinical workflows, and elevate the standard of evidence-based nursing care in high-stress environments.</p>
+   932→   932→   932→                <div class="keyword-tags">
+   933→   933→   933→                    <span class="tag">Critical Care</span>
+   934→   934→   934→                    <span class="tag">Clinical Workflows</span>
+   935→   935→   935→                    <span class="tag">Evidence-Based Practice</span>
+   936→   936→   936→                </div>
+   937→   937→   937→            </div>
+   938→   938→   938→        </div>
+   939→   939→   939→
+   940→   940→   940→        <div class="research-item">
+   941→   941→   941→            <div class="research-left">
+   942→   942→   942→                <span class="research-num">02 / GERIATRICS</span>
+   943→   943→   943→                <h3>Older Adults</h3>
+   944→   944→   944→            </div>
+   945→   945→   945→            <div class="research-right">
+   946→   946→   946→                <p>Studying the specific healthcare needs of the aging population. My research aims to improve quality of life, self-care education, and treatment adherence among elderly patients, addressing the unique physiological and psychological challenges they face.</p>
+   947→   947→   947→                <div class="keyword-tags">
+   948→   948→   948→                    <span class="tag">Gerontology</span>
+   949→   949→   949→                    <span class="tag">Quality of Life</span>
+   950→   950→   950→                    <span class="tag">Healthy Aging</span>
+   951→   951→   951→                </div>
+   952→   952→   952→            </div>
+   953→   953→   953→        </div>
+   954→   954→   954→
+   955→   955→   955→        <div class="research-item">
+   956→   956→   956→            <div class="research-left">
+   957→   957→   957→                <span class="research-num">03 / TECHNOLOGY</span>
+   958→   958→   958→                <h3>Artificial Intelligence</h3>
+   959→   959→   959→            </div>
+   960→   960→   960→            <div class="research-right">
+   961→   961→   961→                <p>Exploring the intersection of modern technology and healthcare. I analyze how AI applications, machine learning algorithms, and health informatics can assist nurses in decision-making, predictive care, and early diagnosis.</p>
+   962→   962→   962→                <div class="keyword-tags">
+   963→   963→   963→                    <span class="tag">Health Informatics</span>
+   964→   964→   964→                    <span class="tag">Machine Learning</span>
+   965→   965→   965→                    <span class="tag">Predictive Care</span>
+   966→   966→   966→                </div>
+   967→   967→   967→            </div>
+   968→   968→   968→        </div>
+   969→   969→   969→
+   970→   970→   970→        <div class="research-item">
+   971→   971→   971→            <div class="research-left">
+   972→   972→   972→                <span class="research-num">04 / MANAGEMENT</span>
+   973→   973→   973→                <h3>Chronic Disease</h3>
+   974→   974→   974→            </div>
+   975→   975→   975→            <div class="research-right">
+   976→   976→   976→                <p>Investigating long-term care strategies for patients with chronic conditions such as diabetes. I evaluate the effectiveness of educational theories and self-care programs in empowering patients to manage their health and adhere to treatments.</p>
+   977→   977→   977→                <div class="keyword-tags">
+   978→   978→   978→                    <span class="tag">Diabetes Management</span>
+   979→   979→   979→                    <span class="tag">Self-Care Programs</span>
+   980→   980→   980→                    <span class="tag">Patient Empowerment</span>
+   981→   981→   981→                </div>
+   982→   982→   982→            </div>
+   983→   983→   983→        </div>
+   984→   984→   984→    </section>
+   985→   985→   985→
+   986→   986→   986→    <!-- Publications Section -->
+   987→   987→   987→    <section id="publications">
+   988→   988→   988→        <div class="container">
+   989→   989→   989→            <h2 class="section-title">Research Papers</h2>
+   990→   990→   990→            
+   991→   991→   991→            <div class="pub-container">
+   992→   992→   992→                <!-- Paper 1 -->
+   993→   993→   993→                <div class="pub" title="Click to view Abstract">
+   994→   994→   994→                    <div class="pub-header">
+   995→   995→   995→                        <h4>Determining the impact of a self-care educational program designed based on the Peplau theory on adherence to treatment and self-care in elderly patients with diabetes.</h4>
+   996→   996→   996→                        <a href="https://doi.org/10.17533/udea.iee.v43n1e05" target="_blank" class="doi-btn">
+   997→   997→   997→                            Read Paper ↗
+   998→   998→   998→                        </a>
+   999→   999→   999→                    </div>
+  1000→  1000→  1000→                    
+  1001→  1001→  1001→                    <!-- Abstract hidden (Note: "Abstract" title removed as it is now in modal header) -->
+  1002→  1002→  1002→                    <div class="pub-abstract">
+  1003→  1003→  1003→                        <p><strong>Objective.</strong> To examine the impact of a self-care program designed using Peplau's theory on adherence and self-care in elderly diabetic patients.</p>
+  1004→  1004→  1004→                        
+  1005→  1005→  1005→                        <p><strong>Methods.</strong> This semi-experimental study involved 102 elderly diabetic patients from a diabetes clinic in Hormoz, Iran, in 2023. Participants were randomly allocated to either the control group (n=51) or the intervention group (n=51). Before and two weeks after the intervention, participants completed a demographic information questionnaire, the Modanloo Adherence to Treatment Questionnaire for Patients with Chronic Illness, and the Summary of Diabetes Self-Care Activities Scale. The intervention group received a self-care educational program based on Peplau's therapeutic communication theory, delivered in three phases: orientation, working, and termination. The program focused on key diabetes self-care factors including diet, medication adherence, physical activity, blood sugar monitoring, and foot care. Educational sessions were conducted in small groups or individually in the clinic’s education room. The control group received routine educational content provided by the diabetes clinic.</p>
+  1006→  1006→  1006→                        
+  1007→  1007→  1007→                        <p><strong>Results.</strong> The findings showed that the difference between the pre-post mean scores was significantly higher in the intervention group compared with the control group in the total self-care score, as well as in its dimensions: diet, blood sugar regulation, and foot care (p&lt;0.001). On the other hand, in terms of adherence, no significant difference was observed in the mean difference between groups for the total score (p=0.307), although a statistical difference was found in the dimensions of willingness to participate in treatment (p=0.035) and ability to adapt (p&lt;0.001).</p>
+  1008→  1008→  1008→                        
+  1009→  1009→  1009→                        <p><strong>Conclusion.</strong> The self-care educational program based on Peplau's theory improved the self-care and two dimensions of the adherence: willingness to participate in treatment and ability to adapt in diabetic patients.</p>
+  1010→  1010→  1010→                    </div>
+  1011→  1011→  1011→                    
+  1012→  1012→  1012→                    <div class="pub-footer">
+  1013→  1013→  1013→                        <span class="pub-date">Investigación y Educación en Enfermería • 2025</span>
+  1014→  1014→  1014→                    </div>
+  1015→  1015→  1015→                </div>
+  1016→  1016→  1016→                
+  1017→  1017→  1017→            </div>
+  1018→  1018→  1018→            
+  1019→  1019→  1019→        </div>
+  1020→  1020→  1020→    </section>
+  1021→  1021→  1021→
+  1022→  1022→  1022→    <!-- Teaching Section -->
+  1023→  1023→  1023→    <section id="teaching">
+  1024→  1024→  1024→        <div class="container">
+  1025→  1025→  1025→            <h2 class="section-title">Teaching</h2>
+  1026→  1026→  1026→            <div class="cards">
+  1027→  1027→  1027→                <div class="card"><h3>Intensive Nursing care in CCU</h3></div>
+  1028→  1028→  1028→                <div class="card"><h3>Prehospital Medical Emergencies</h3></div>
+  1029→  1029→  1029→                <div class="card"><h3>Prehospital Trauma Care</h3></div>
+  1030→  1030→  1030→            </div>
+  1031→  1031→  1031→        </div>
+  1032→  1032→  1032→    </section>
+  1033→  1033→  1033→
+  1034→  1034→  1034→    <!-- Footer -->
+  1035→  1035→  1035→    <footer>
+  1036→  1036→  1036→        <div class="footer-col brand-col">
+  1037→  1037→  1037→            <h2>MATIN ROOSTA</h2>
+  1038→  1038→  1038→            <p>
+  1039→  1039→  1039→                Faculty of Nursing and Midwifery, Hormozgan University of Medical Sciences (HUMS), Bandar Abbas, Iran.
+  1040→  1040→  1040→            </p>
+  1041→  1041→  1041→        </div>
+  1042→  1042→  1042→        
+  1043→  1043→  1043→        <div class="footer-col nav-col">
+  1044→  1044→  1044→            <span class="footer-heading">NAVIGATE</span>
+  1045→  1045→  1045→            <a href="research.html">Research</a>
+  1046→  1046→  1046→            <a href="#publications">Publications</a>
+  1047→  1047→  1047→            <a href="#teaching">Teaching</a>
+  1048→  1048→  1048→        </div>
+  1049→  1049→  1049→        
+  1050→  1050→  1050→        <div class="footer-col social-col">
+  1051→  1051→  1051→            <span class="footer-heading">ELSEWHERE</span>
+  1052→  1052→  1052→            
+  1053→  1053→  1053→            <a href="mailto:matinr1997@gmail.com">
+  1054→  1054→  1054→                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+  1055→  1055→  1055→                Email &#8599;
+  1056→  1056→  1056→            </a>
+  1057→  1057→  1057→
+  1058→  1058→  1058→            <a href="https://www.linkedin.com/in/matin-roosta-ye-abkenar" target="_blank">
+  1059→  1059→  1059→                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+  1060→  1060→  1060→                LinkedIn &#8599;
+  1061→  1061→  1061→            </a>
+  1062→  1062→  1062→            
+  1063→  1063→  1063→            <a href="https://www.youtube.com/@coffee.nursing" target="_blank">
+  1064→  1064→  1064→                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+  1065→  1065→  1065→                YouTube &#8599;
+  1066→  1066→  1066→            </a>
+  1067→  1067→  1067→            
+  1068→  1068→  1068→            <a href="https://scholar.google.com/citations?hl=en&user=ZGdhd8QAAAAJ" target="_blank">
+  1069→  1069→  1069→                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2.81-1.53V17h2V8.29L12 3zm6.8 7.82L12 14.54 5.2 10.82 12 7.11l6.8 3.71z"/></svg>
+  1070→  1070→  1070→                Google Scholar &#8599;
+  1071→  1071→  1071→            </a>
+  1072→  1072→  1072→            
+  1073→  1073→  1073→            <a href="https://orcid.org/0000-0001-9121-0000" target="_blank">
+  1074→  1074→  1074→                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.949-.947.949a.95.95 0 0 1-.949-.949c0-.516.424-.947.949-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.44h2.297c3.272 0 4.022-2.484 4.022-3.72 0-2.016-1.284-3.72-4.097-3.72h-2.222z"/></svg>
+  1075→  1075→  1075→                ORCID &#8599;
+  1076→  1076→  1076→            </a>
+  1077→  1077→  1077→            
+  1078→  1078→  1078→        </div>
+  1079→  1079→  1079→    </footer>
+  1080→  1080→  1080→
+  1081→  1081→  1081→    <!-- Sub Footer -->
+  1082→  1082→  1082→    <div class="sub-footer">
+  1083→  1083→  1083→        <span>© 2026 Matin Roosta</span>
+  1084→  1084→  1084→        <span>Hormozgan University of Medical Sciences, Iran.</span>
+  1085→  1085→  1085→    </div>
+  1086→  1086→  1086→
+  1087→  1087→  1087→    <!-- Academic Modal Background and Content -->
+  1088→  1088→  1088→    <div id="abstractModal" class="modal">
+  1089→  1089→  1089→        <div class="modal-content">
+  1090→  1090→  1090→            <!-- Modal Header (Academic Design) -->
+  1091→  1091→  1091→            <div class="modal-header">
+  1092→  1092→  1092→                <h3>
+  1093→  1093→  1093→                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  1094→  1094→  1094→                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+  1095→  1095→  1095→                        <polyline points="14 2 14 8 20 8"></polyline>
+  1096→  1096→  1096→                        <line x1="16" y1="13" x2="8" y2="13"></line>
+  1097→  1097→  1097→                        <line x1="16" y1="17" x2="8" y2="17"></line>
+  1098→  1098→  1098→                        <line x1="10" y1="9" x2="8" y2="9"></line>
+  1099→  1099→  1099→                    </svg>
+  1100→  1100→  1100→                    Structured Abstract
+  1101→  1101→  1101→                </h3>
+  1102→  1102→  1102→                <div class="close-modal" title="Close">
+  1103→  1103→  1103→                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  1104→  1104→  1104→                        <line x1="18" y1="6" x2="6" y2="18"></line>
+  1105→  1105→  1105→                        <line x1="6" y1="6" x2="18" y2="18"></line>
+  1106→  1106→  1106→                    </svg>
+  1107→  1107→  1107→                </div>
+  1108→  1108→  1108→            </div>
+  1109→  1109→  1109→            
+  1110→  1110→  1110→            <!-- Modal Body (Content injected here) -->
+  1111→  1111→  1111→            <div id="modalBody" class="modal-body"></div>
+  1112→  1112→  1112→        </div>
+  1113→  1113→  1113→    </div>
+  1114→  1114→  1114→
+  1115→  1115→  1115→    <!-- Scripts -->
+  1116→  1116→  1116→    <script>
+  1117→  1117→  1117→        // 1. Scroll Progress
+  1118→  1118→  1118→        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+  1119→  1119→  1119→        const progressCircleBar = document.getElementById('progressCircleBar');
+  1120→  1120→  1120→        
+  1121→  1121→  1121→        window.addEventListener('scroll', () => {
+  1122→  1122→  1122→            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  1123→  1123→  1123→            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  1124→  1124→  1124→            
+  1125→  1125→  1125→            if (height > 0) {
+  1126→  1126→  1126→                const scrolled = (winScroll / height) * 100;
+  1127→  1127→  1127→                const circumference = 282.743;
+  1128→  1128→  1128→                const offset = circumference - (scrolled / 100) * circumference;
+  1129→  1129→  1129→                if (progressCircleBar) {
+  1130→  1130→  1130→                    progressCircleBar.style.strokeDashoffset = offset;
+  1131→  1131→  1131→                }
+  1132→  1132→  1132→                
+  1133→  1133→  1133→                if (winScroll > 150) {
+  1134→  1134→  1134→                    scrollToTopBtn.classList.add('visible');
+  1135→  1135→  1135→                } else {
+  1136→  1136→  1136→                    scrollToTopBtn.classList.remove('visible');
+  1137→  1137→  1137→                }
+  1138→  1138→  1138→            }
+  1139→  1139→  1139→        });
+  1140→  1140→  1140→
+  1141→  1141→  1141→        if (scrollToTopBtn) {
+  1142→  1142→  1142→            scrollToTopBtn.addEventListener('click', (e) => {
+  1143→  1143→  1143→                e.preventDefault(); 
+  1144→  1144→  1144→                window.scrollTo({
+  1145→  1145→  1145→                    top: 0,
+  1146→  1146→  1146→                    behavior: 'smooth'
+  1147→  1147→  1147→                });
+  1148→  1148→  1148→            });
+  1149→  1149→  1149→        }
+  1150→  1150→  1150→
+  1151→  1151→  1151→        // 2. Dark Mode Toggle
+  1152→  1152→  1152→        const themeToggleBtn = document.getElementById('themeToggleBtn');
+  1153→  1153→  1153→        const body = document.body;
+  1154→  1154→  1154→        const iconPath = document.getElementById('themeIconPath');
+  1155→  1155→  1155→
+  1156→  1156→  1156→        const moonIcon = "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"; 
+  1157→  1157→  1157→        const sunIcon = "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"; 
+  1158→  1158→  1158→
+  1159→  1159→  1159→        if (localStorage.getItem('theme') === 'dark') {
+  1160→  1160→  1160→            body.classList.add('dark-mode');
+  1161→  1161→  1161→            iconPath.setAttribute('d', sunIcon);
+  1162→  1162→  1162→        }
+  1163→  1163→  1163→
+  1164→  1164→  1164→        themeToggleBtn.addEventListener('click', () => {
+  1165→  1165→  1165→            body.classList.toggle('dark-mode');
+  1166→  1166→  1166→            
+  1167→  1167→  1167→            if (body.classList.contains('dark-mode')) {
+  1168→  1168→  1168→                localStorage.setItem('theme', 'dark');
+  1169→  1169→  1169→                iconPath.setAttribute('d', sunIcon);
+  1170→  1170→  1170→            } else {
+  1171→  1171→  1171→                localStorage.setItem('theme', 'light');
+  1172→  1172→  1172→                iconPath.setAttribute('d', moonIcon);
+  1173→  1173→  1173→            }
+  1174→  1174→  1174→        });
+  1175→  1175→  1175→
+  1176→  1176→  1176→        // 3. Academic Modal Logic
+  1177→  1177→  1177→        const modal = document.getElementById('abstractModal');
+  1178→  1178→  1178→        const modalBody = document.getElementById('modalBody');
+  1179→  1179→  1179→        const closeModalBtn = document.querySelector('.close-modal');
+  1180→  1180→  1180→        const publications = document.querySelectorAll('.pub');
+  1181→  1181→  1181→
+  1182→  1182→  1182→        publications.forEach(pub => {
+  1183→  1183→  1183→            pub.addEventListener('click', function(e) {
+  1184→  1184→  1184→                if (e.target.closest('.doi-btn')) return;
+  1185→  1185→  1185→
+  1186→  1186→  1186→                const abstractHTML = this.querySelector('.pub-abstract').innerHTML;
+  1187→  1187→  1187→                modalBody.innerHTML = abstractHTML;
+  1188→  1188→  1188→                
+  1189→  1189→  1189→                // Show modal, prevent body scroll
+  1190→  1190→  1190→                modal.classList.add('show');
+  1191→  1191→  1191→                document.body.style.overflow = 'hidden';
+  1192→  1192→  1192→            });
+  1193→  1193→  1193→        });
+  1194→  1194→  1194→
+  1195→  1195→  1195→        const closeAbstractModal = () => {
+  1196→  1196→  1196→            modal.classList.remove('show');
+  1197→  1197→  1197→            document.body.style.overflow = ''; // Restore body scroll
+  1198→  1198→  1198→        };
+  1199→  1199→  1199→
+  1200→  1200→  1200→        closeModalBtn.addEventListener('click', closeAbstractModal);
+  1201→  1201→  1201→
+  1202→  1202→  1202→        modal.addEventListener('click', function(e) {
+  1203→  1203→  1203→            if (e.target === modal) {
+  1204→  1204→  1204→                closeAbstractModal();
+  1205→  1205→  1205→            }
+  1206→  1206→  1206→        });
+  1207→  1207→  1207→
+  1208→  1208→  1208→        document.addEventListener('keydown', function(e) {
+  1209→  1209→  1209→            if (e.key === 'Escape' && modal.classList.contains('show')) {
+  1210→  1210→  1210→                closeAbstractModal();
+  1211→  1211→  1211→            }
+  1212→  1212→  1212→        });
+  1213→  1213→  1213→    </script>
+  1214→  1214→  1214→
+  1215→  1215→  1215→</body>
+  1216→  1216→  1216→</html>

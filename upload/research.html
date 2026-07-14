@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | Matin Roosta</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- فونت گوگل (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================= */
+        /* ----- متغیرهای رنگی (برای دارک مود) ----- */
+        /* ========================================= */
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #111111;
+            --text-muted: #444444;
+            --text-light: #555555;
+            --border-color: #111111;
+            --header-bg: rgba(255, 255, 255, 0.98);
+            --accent-blue: #2548ff;
+            --card-bg: #ffffff;
+            --card-hover-bg: #111111;
+            --card-hover-text: #ffffff;
+            --item-hover-bg: #fafafa;
+            --abstract-border: #dddddd;
+            --svg-fill: #111111;
+        }
+
+        /* رنگ های حالت تاریک */
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-main: #f0f0f0;
+            --text-muted: #cccccc;
+            --text-light: #aaaaaa;
+            --border-color: #f0f0f0;
+            --header-bg: rgba(18, 18, 18, 0.98);
+            --accent-blue: #6b8aff; /* آبی روشن تر برای دیده شدن در پس زمینه تیره */
+            --card-bg: #1e1e1e;
+            --card-hover-bg: #f0f0f0;
+            --card-hover-text: #111111;
+            --item-hover-bg: #1a1a1a;
+            --abstract-border: #333333;
+            --svg-fill: #f0f0f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.8;
+            transition: background-color 0.4s ease, color 0.4s ease; /* انیمیشن نرم تغییر تم */
+        }
+
+        /* ----- Header & Nav ----- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--header-bg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 50px;
+            border-bottom: 2px solid var(--border-color);
+            z-index: 1000;
+            transition: background-color 0.4s ease, border-color 0.4s ease;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.4s ease;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        /* دکمه زبان و دارک مود */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: 30px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--item-hover-bg);
+        }
+
+        .theme-toggle svg {
+            fill: none;
+            stroke: var(--text-main);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            width: 20px;
+            height: 20px;
+            transition: stroke 0.4s ease;
+        }
+
+        /* محتوای صفحه پژوهش */
+        .page-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 180px 50px 100px 50px; /* فاصله از بالا بخاطر هدر ثابت */
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            transition: color 0.4s ease;
+        }
+
+        .highlight {
+            color: var(--accent-blue);
+            transition: color 0.4s ease;
+        }
+
+        .section-block {
+            margin-top: 60px;
+        }
+
+        .section-block h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            display: inline-block;
+            transition: border-color 0.4s ease;
+        }
+
+        .section-block p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            text-align: justify;
+            transition: color 0.4s ease;
+        }
+
+        /* فوتر (دقیقا مثل صفحه اصلی) */
+        footer {
+            border-top: 2px solid var(--border-color);
+            padding: 80px 50px;
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+            background-color: var(--bg-color);
+            transition: border-color 0.4s ease, background-color 0.4s ease;
+        }
+
+        .footer-col { display: flex; flex-direction: column; gap: 15px; }
+        .brand-col { flex: 2; }
+        .brand-col h2 { font-size: 1.5rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.4s ease; }
+        .brand-col p { color: var(--text-light); font-size: 1.1rem; max-width: 400px; transition: color 0.4s ease; }
+        .nav-col, .social-col { flex: 1; }
+        .footer-heading { color: var(--accent-blue); font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; font-size: 0.9rem; transition: color 0.4s ease; }
+        .footer-col a { color: var(--text-main); text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: color 0.3s; display: inline-flex; align-items: center; gap: 10px; }
+        .footer-col a:hover { color: var(--accent-blue); }
+
+        @media (max-width: 900px) {
+            header { padding: 20px; }
+            .nav-links { display: none; }
+            .page-content { padding: 120px 20px 60px 20px; }
+            .page-title { font-size: 2.5rem; }
+            footer { flex-direction: column; padding: 50px 20px; gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        // Apply dark mode immediately before rendering to prevent white flash
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+
+    <!-- هدر -->
+    <header>
+        <a href="index.html" class="logo">Matin Roosta</a>
+        <div style="display: flex; align-items: center;">
+            <nav class="nav-links">
+                <a href="research.html" class="active">Research</a>
+                <a href="index.html#publications">Publications</a>
+                <a href="index.html#teaching">Teaching</a>
+            </nav>
+            <div class="header-actions">
+                <!-- دکمه دارک مود -->
+                <button class="theme-toggle" id="themeToggleBtn" title="Toggle Dark Mode">
+                    <!-- پیش فرض: آیکون ماه -->
+                    <svg id="themeIcon" viewBox="0 0 24 24">
+                        <path id="themeIconPath" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- محتوای اصلی صفحه -->
+    <main class="page-content">
+        
+        <h1 class="page-title">The Foundation of <span class="highlight">Nursing Research</span></h1>
+
+        <!-- بخش اول: درباره پژوهش در پرستاری -->
+        <div class="section-block">
+            <h2>Advancing Clinical Practice</h2>
+            <p>
+                Nursing research is a fundamental pillar of modern healthcare. It bridges the critical gap between clinical practice and scientific evidence. Rather than relying solely on tradition or intuition, nursing research systematically investigates clinical workflows, patient care protocols, and healthcare systems to determine what truly works. 
+            </p>
+            <p>
+                My focus in this field revolves around critical care, emergency medicine, and chronic disease management. By rigorously analyzing data and applying evidence-based methodologies, we can identify gaps in current healthcare delivery and develop innovative strategies that elevate the standard of care for patients in high-stress environments.
+            </p>
+        </div>
+
+        <!-- بخش دوم: تاثیر پژوهش بر زندگی مردم -->
+        <div class="section-block">
+            <h2>Impact on Human Lives</h2>
+            <p>
+                The true value of nursing research lies in its profound, direct impact on human lives. Research is not just numbers and academic papers; it is the science of care translated into real-world outcomes. When we discover a more effective self-care educational program for diabetic patients, we are directly empowering individuals to manage their health, avoid severe complications, and maintain their independence.
+            </p>
+            <p>
+                Ultimately, nursing research reduces recovery times, minimizes hospital readmissions, and enhances the overall quality of life. It ensures that when people are at their most vulnerable—whether in an ICU or managing a lifelong condition—they receive care that is not only compassionate but scientifically proven to be the most effective.
+            </p>
+        </div>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-col brand-col">
+            <h2>MATIN ROOSTA</h2>
+            <p>PhD Candidate in Nursing and Faculty Member at the Department of Prehospital Emergency Medicine.</p>
+        </div>
+        
+        <div class="footer-col nav-col">
+            <span class="footer-heading">NAVIGATE</span>
+            <a href="index.html">Home</a>
+            <a href="research.html">Research</a>
+            <a href="index.html#publications">Publications</a>
+            <a href="index.html#teaching">Teaching</a>
+        </div>
+        
+        <div class="footer-col social-col">
+            <span class="footer-heading">ELSEWHERE</span>
+            <a href="#" target="_blank">LinkedIn &#8599;</a>
+            <a href="#" target="_blank">YouTube &#8599;</a>
+            <a href="https://scholar.google.com/citations?hl=en&user=ZGdhd8QAAAAJ" target="_blank">Google Scholar &#8599;</a>
+            <a href="#" target="_blank">ORCID &#8599;</a>
+        </div>
+    </footer>
+
+    <!-- Scripts (دارک مود) -->
+    <script>
+        // Dark Mode Toggle
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const body = document.body;
+        const iconPath = document.getElementById('themeIconPath');
+
+        // مسیر آیکون های SVG
+        const moonIcon = "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"; // هلال ماه
+        const sunIcon = "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"; // خورشید
+
+        // بررسی حافظه مرورگر هنگام لود صفحه
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            if (iconPath) {
+                iconPath.setAttribute('d', sunIcon);
+            }
+        }
+
+        // رویداد کلیک روی دکمه
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                
+                if (body.classList.contains('dark-mode')) {
+                    localStorage.setItem('theme', 'dark');
+                    if (iconPath) iconPath.setAttribute('d', sunIcon);
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    if (iconPath) iconPath.setAttribute('d', moonIcon);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

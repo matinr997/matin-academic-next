@@ -63,9 +63,9 @@ export default async function BlogPostPage({
     author: {
       "@type": "Person",
       name: "Matin Roosta-ye Abkenar",
-      url: "https://matin-academic-next.vercel.app/",
+      url: "https://matin-academic-next-nkah.vercel.app/",
     },
-    mainEntityOfPage: `https://matin-academic-next.vercel.app/blog.html/${post.slug}`,
+    mainEntityOfPage: `https://matin-academic-next-nkah.vercel.app/blog.html/${post.slug}`,
     keywords: post.tags.join(", "),
   };
 

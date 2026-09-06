@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/data/content";
 
-const SITE_URL = "https://matin-academic-next.vercel.app";
+const SITE_URL = "https://matin-academic-next-nkah.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [

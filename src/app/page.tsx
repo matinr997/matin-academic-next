@@ -25,8 +25,8 @@ function PersonJsonLd() {
     alternateName: "Matin Roosta",
     jobTitle: ["Nurse", "Researcher", "Faculty Member"],
     description: profile.shortBio,
-    image: "https://matin-academic-next.vercel.app/images/profile.jpg",
-    url: "https://matin-academic-next.vercel.app/",
+    image: "https://matin-academic-next-nkah.vercel.app/images/profile.jpg",
+    url: "https://matin-academic-next-nkah.vercel.app/",
     email: `mailto:${profile.email}`,
     affiliation: {
       "@type": "Organization",

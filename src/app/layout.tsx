@@ -32,7 +32,7 @@ const vazirmatn = Vazirmatn({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://matin-academic-next.vercel.app"),
+  metadataBase: new URL("https://matin-academic-next-nkah.vercel.app"),
   title: "Matin Roosta | Academic Portfolio",
   description:
     "Matin Roosta — nurse, educator, and researcher. Faculty member at Hormozgan University of Medical Sciences working on critical care, geriatric nursing, diabetes self-care, and AI in healthcare.",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     "AI in nursing",
     "Hormozgan University of Medical Sciences",
   ],
-  authors: [{ name: "Matin Roosta", url: "https://matin-academic-next.vercel.app" }],
+  authors: [{ name: "Matin Roosta", url: "https://matin-academic-next-nkah.vercel.app" }],
   creator: "Matin Roosta",
   alternates: {
     canonical: "/",

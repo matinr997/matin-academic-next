@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { profile, profileFa } from "@/lib/data/content";
 import { ThemeToggle } from "@/components/site/theme-toggle";
 
-type Variant = "en-home" | "en-research" | "fa-home";
+type Variant = "en-home" | "en-research" | "en-blog" | "fa-home";
 
 const navByVariant: Record<
   Variant,
@@ -17,11 +17,19 @@ const navByVariant: Record<
     { label: "Research", href: "/research.html" },
     { label: "Publications", href: "/#publications" },
     { label: "Teaching", href: "/#teaching" },
+    { label: "Blog", href: "/blog.html" },
   ],
   "en-research": [
     { label: "Research", href: "/research.html" },
     { label: "Publications", href: "/#publications" },
     { label: "Teaching", href: "/#teaching" },
+    { label: "Blog", href: "/blog.html" },
+  ],
+  "en-blog": [
+    { label: "Research", href: "/research.html" },
+    { label: "Publications", href: "/#publications" },
+    { label: "Teaching", href: "/#teaching" },
+    { label: "Blog", href: "/blog.html" },
   ],
   "fa-home": profileFa.nav,
 };
@@ -35,7 +43,13 @@ export function Header({ variant }: { variant: Variant }) {
   const logoText = isFa ? profileFa.name : profile.name;
   const logoHref = isFa ? profileFa.englishUrl : profile.homeUrl;
   const nav = navByVariant[variant];
-  const activePath = isFa ? null : variant === "en-research" ? "/research.html" : "/";
+  const activePath = isFa
+    ? null
+    : variant === "en-research"
+    ? "/research.html"
+    : variant === "en-blog"
+    ? "/blog.html"
+    : "/";
 
   React.useEffect(() => {
     const onScroll = () => {

@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { profile, profileFa } from "@/lib/data/content";
 import { OrcidIcon, ScholarIcon } from "@/components/site/brand-icons";
 
-type Variant = "en-home" | "en-research" | "fa-home";
+type Variant = "en-home" | "en-research" | "en-blog" | "fa-home";
 
 function socialLinks(variant: Variant) {
   const isFa = variant === "fa-home";
@@ -31,6 +31,7 @@ const navByVariant: Record<Variant, { label: string; href: string }[]> = {
     { label: "Research", href: "/research.html" },
     { label: "Publications", href: "/#publications" },
     { label: "Teaching", href: "/#teaching" },
+    { label: "Blog", href: "/blog.html" },
   ],
   // research.html footer nav includes Home
   "en-research": [
@@ -38,11 +39,21 @@ const navByVariant: Record<Variant, { label: string; href: string }[]> = {
     { label: "Research", href: "/research.html" },
     { label: "Publications", href: "/#publications" },
     { label: "Teaching", href: "/#teaching" },
+    { label: "Blog", href: "/blog.html" },
+  ],
+  // blog.html footer nav includes Home
+  "en-blog": [
+    { label: "Home", href: "/" },
+    { label: "Research", href: "/research.html" },
+    { label: "Publications", href: "/#publications" },
+    { label: "Teaching", href: "/#teaching" },
+    { label: "Blog", href: "/blog.html" },
   ],
   "fa-home": [
     { label: "پژوهش‌ها", href: "#" },
     { label: "مقالات", href: "/index-fa.html#publications" },
     { label: "سوابق تدریس", href: "/index-fa.html#teaching" },
+    { label: "وبلاگ", href: "/blog.html" },
   ],
 };
 

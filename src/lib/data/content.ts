@@ -200,6 +200,7 @@ export const profileFa = {
     { label: "پژوهش‌ها", href: "#" },
     { label: "مقالات", href: "#publications" },
     { label: "سوابق تدریس", href: "#teaching" },
+    { label: "وبلاگ", href: "/blog.html" },
   ],
   footerBio: "پژوهشگر و عضو هیئت علمی گروه فوریت‌های پزشکی پیش‌بیمارستانی.",
   footerNavHeading: "دسترسی سریع",
@@ -272,3 +273,74 @@ export const faSectionTitles = {
   research: "مقالات پژوهشی",
   teaching: "سوابق تدریس",
 };
+
+/* ------------------------------------------------------------------ */
+/* Blog — edit/add posts here. Each post gets its own page at          */
+/* /blog.html/<slug>. Keep slugs URL-safe (lowercase, dashes).         */
+/* ------------------------------------------------------------------ */
+
+export const blogPage = {
+  titlePre: "Notes on",
+  titleAccent: "care & evidence",
+  intro:
+    "Short essays and reflections on nursing practice, education, and research — written for clinicians, students, and the curious.",
+};
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readingTime: string;
+  tags: string[];
+  paragraphs: string[];
+}
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug: "peplau-theory-bedside",
+    title: "What Peplau's Theory Looks Like at the Bedside",
+    excerpt:
+      "Interpersonal relations theory sounds abstract — until you watch an elderly patient with diabetes start trusting the process. Here is how orientation, working, and termination phases play out in real education sessions.",
+    date: "2025-06-12",
+    readingTime: "6 min read",
+    tags: ["Nursing Theory", "Diabetes", "Patient Education"],
+    paragraphs: [
+      "When I first designed a self-care program based on Peplau's interpersonal relations theory, my colleagues asked a fair question: how does a theory from the 1950s help an elderly patient remember foot care? The answer only became clear in the clinic's education room, sitting across from patients who had heard generic diabetes advice for years and tuned most of it out.",
+      "The orientation phase is where everything is won or lost. Instead of opening with a lecture, we opened with listening: what does diabetes stop you from doing that matters to you? For one patient it was walking to the mosque without fear; for another, it was cooking without feeling like a burden. Naming a personal goal turns abstract self-care into something worth the effort.",
+      "In the working phase, education becomes a partnership rather than a prescription. We practiced blood sugar monitoring together, adjusted diet advice to foods the patient actually eats, and reviewed foot care step by step. Small-group sessions helped — patients borrowed confidence from each other, and questions surfaced that no one dares to ask a doctor in a rushed visit.",
+      "Termination is the phase most programs skip, and the one that determines whether change lasts. We reviewed what each patient could now do independently, named the warning signs that merit a clinic visit, and closed with a concrete two-week plan. Two weeks later, the self-care scores told the story our eyes had already seen: diet, monitoring, and foot care had genuinely improved.",
+      "Theory, done right, is not decoration on a research paper. It is a sequence of human moments — trust, practice, farewell — that leaves the patient more capable than you found them.",
+    ],
+  },
+  {
+    slug: "ai-nursing-decision-making",
+    title: "AI Will Not Replace Nurses — But Nurses Using AI Will Lead",
+    excerpt:
+      "Machine learning can flag deterioration hours earlier than the human eye. What it cannot do is hold a family's trust. Notes on where AI genuinely helps nursing decision-making — and where it must stay out of the way.",
+    date: "2025-09-02",
+    readingTime: "5 min read",
+    tags: ["Artificial Intelligence", "Critical Care", "Health Informatics"],
+    paragraphs: [
+      "Every few months, a headline declares that AI will replace some part of healthcare. As someone who works in critical and emergency care and researches AI applications in nursing, I read those headlines with mixed feelings — excitement about the tools, skepticism about the framing.",
+      "Where AI genuinely shines is pattern recognition at scale: early warning scores that synthesize vital signs, models that flag sepsis risk before it is clinically obvious, documentation assistants that return minutes to the bedside. In high-stress environments, a quiet, reliable second pair of eyes is worth more than any grand promise.",
+      "What AI cannot do is the core of nursing: earn trust, read a frightened family, decide when a protocol should bend for a person. Predictive scores support judgment; they do not substitute for it. The nurses who thrive will be those who treat AI as an instrument — questioning its outputs, understanding its limits, and keeping the patient, not the dashboard, at the center.",
+      "My advice to students: learn the fundamentals of health informatics the way you learned pharmacology — as a safety issue. Know what your tools assume, check them against your assessment, and never let a model outvote your eyes on a deteriorating patient.",
+    ],
+  },
+  {
+    slug: "caring-older-adults-chronic-disease",
+    title: "Caring for Older Adults with Chronic Disease: Less Is Often More",
+    excerpt:
+      "Polypharmacy, conflicting advice, and education materials designed for someone else. What geriatric nursing taught me about simplifying care so elderly patients can actually follow it.",
+    date: "2026-01-18",
+    readingTime: "4 min read",
+    tags: ["Geriatrics", "Chronic Disease", "Self-Care"],
+    paragraphs: [
+      "Older adults with chronic conditions rarely suffer from a lack of information. They suffer from too much of it — leaflets that contradict each other, medication schedules only a pharmacist could love, and advice that ignores how they actually live.",
+      "Working with elderly patients with diabetes reshaped how I teach self-care. The breakthrough was subtraction: one clear diet principle instead of ten, one monitoring routine anchored to an existing habit, one foot-care check at the same time each day. Adherence improved not because patients tried harder, but because we asked for less and meant it.",
+      "There is also a dignity dimension that numbers miss. An older adult who manages their own care keeps independence, and independence is quality of life. Every program we design should be judged by a simple question: does this make the patient more capable, or more dependent?",
+      "If you educate elderly patients, start by asking what a good day looks like to them — then build the smallest possible plan that protects it.",
+    ],
+  },
+];

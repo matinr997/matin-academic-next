@@ -117,16 +117,23 @@ export default async function BlogPostPage({
 
           {post.image && (
             <Reveal delay={100}>
-              <span className="relative mt-10 block h-64 w-full overflow-hidden rounded-2xl border border-border sm:h-96">
-                <Image
-                  src={post.image}
-                  alt={post.imageAlt ?? post.title}
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 768px"
-                  className="object-cover"
-                />
-              </span>
+              <figure className="mt-10">
+                <span className="relative block h-64 w-full overflow-hidden rounded-2xl border border-border sm:h-96">
+                  <Image
+                    src={post.image}
+                    alt={post.imageAlt ?? post.title}
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 768px"
+                    className="object-cover"
+                  />
+                </span>
+                {post.imageCredit && (
+                  <figcaption className="mt-3 text-center text-xs leading-relaxed text-muted-foreground">
+                    {post.imageCredit}
+                  </figcaption>
+                )}
+              </figure>
             </Reveal>
           )}
 

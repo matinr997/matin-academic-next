@@ -296,6 +296,7 @@ export interface BlogPost {
   /** Cover image path, e.g. "/images/blog/peplau.jpg". Omit for no image. */
   image?: string;
   imageAlt?: string;
+  imageCredit?: string;
   paragraphs: string[];
 }
 
@@ -308,6 +309,9 @@ export const blogPosts: BlogPost[] = [
     date: "2025-06-12",
     readingTime: "6 min read",
     tags: ["Nursing Theory", "Diabetes", "Patient Education"],
+    image: "/images/blog/hildegard-peplau.webp",
+    imageAlt: "Portrait of Hildegard Peplau (1909–1999)",
+    imageCredit: "Portrait of Hildegard E. Peplau (1909–1999), founder of interpersonal relations theory in nursing.",
     paragraphs: [
       "When I first designed a self-care program based on Peplau's interpersonal relations theory, my colleagues asked a fair question: how does a theory from the 1950s help an elderly patient remember foot care? The answer only became clear in the clinic's education room, sitting across from patients who had heard generic diabetes advice for years and tuned most of it out.",
       "The orientation phase is where everything is won or lost. Instead of opening with a lecture, we opened with listening: what does diabetes stop you from doing that matters to you? For one patient it was walking to the mosque without fear; for another, it was cooking without feeling like a burden. Naming a personal goal turns abstract self-care into something worth the effort.",

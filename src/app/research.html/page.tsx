@@ -9,7 +9,15 @@ import { researchPage } from "@/lib/data/content";
 export const metadata: Metadata = {
   title: "Research | Matin Roosta",
   description:
-    "The foundation of nursing research — advancing clinical practice and its impact on human lives.",
+    "The foundation of nursing research — advancing clinical practice in critical care, emergency medicine, and chronic disease management, and its impact on human lives.",
+  alternates: { canonical: "/research.html" },
+  openGraph: {
+    title: "Research | Matin Roosta",
+    description:
+      "The foundation of nursing research — advancing clinical practice and its impact on human lives.",
+    url: "/research.html",
+    type: "article",
+  },
 };
 
 export default function ResearchPage() {

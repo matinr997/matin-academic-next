@@ -7,7 +7,15 @@ import { SectionLabel } from "@/components/site/section-label";
 
 export const metadata: Metadata = {
   title: "Publications | Matin Roosta",
-  description: "Publications by Matin Roosta.",
+  description:
+    "Publications by Matin Roosta — peer-reviewed nursing research on diabetes self-care, Peplau's theory, and evidence-based practice.",
+  alternates: { canonical: "/publications.html" },
+  openGraph: {
+    title: "Publications | Matin Roosta",
+    description: "Publications by Matin Roosta.",
+    url: "/publications.html",
+    type: "article",
+  },
 };
 
 export default function PublicationsPage() {

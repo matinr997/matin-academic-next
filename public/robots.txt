@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://matinr997.github.io/matinroosta.github.io/sitemap.xml

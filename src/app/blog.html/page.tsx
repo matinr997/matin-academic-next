@@ -11,7 +11,15 @@ import { blogPage, blogPosts } from "@/lib/data/content";
 export const metadata: Metadata = {
   title: "Blog | Matin Roosta",
   description:
-    "Essays and reflections on nursing practice, education, and research by Matin Roosta.",
+    "Essays and reflections on nursing practice, education, and research by Matin Roosta — Peplau's theory, AI in nursing, and geriatric care.",
+  alternates: { canonical: "/blog.html" },
+  openGraph: {
+    title: "Blog | Matin Roosta",
+    description:
+      "Essays and reflections on nursing practice, education, and research by Matin Roosta.",
+    url: "/blog.html",
+    type: "website",
+  },
 };
 
 export default function BlogPage() {

@@ -20,9 +20,26 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) return { title: "Post not found | Matin Roosta" };
+  const url = `/blog.html/${post.slug}`;
   return {
     title: `${post.title} | Matin Roosta`,
     description: post.excerpt,
+    keywords: post.tags,
+    authors: [{ name: "Matin Roosta" }],
+    alternates: { canonical: url },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url,
+      type: "article",
+      publishedTime: post.date,
+      authors: ["Matin Roosta"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+    },
   };
 }
 
@@ -37,8 +54,27 @@ export default async function BlogPostPage({
 
   const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: "Matin Roosta-ye Abkenar",
+      url: "https://matin-academic-next.vercel.app/",
+    },
+    mainEntityOfPage: `https://matin-academic-next.vercel.app/blog.html/${post.slug}`,
+    keywords: post.tags.join(", "),
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header variant="en-blog" />
       <main className="flex-1">
         <article className="relative mx-auto max-w-3xl px-5 pt-36 pb-16 sm:px-8 sm:pt-44">

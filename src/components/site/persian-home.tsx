@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { ArrowUpLeft, GraduationCap } from "lucide-react";
+import { ArrowUpLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   profileFa,
@@ -12,6 +12,7 @@ import {
   faSectionTitles,
 } from "@/lib/data/content";
 import { Reveal } from "@/components/site/reveal";
+import { OrcidIcon, ScholarIcon } from "@/components/site/brand-icons";
 
 export function PersianHome() {
   return (
@@ -101,10 +102,24 @@ function PersianHero() {
               href={profileFa.scholarUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-6 text-sm font-medium text-background transition-colors duration-300 hover:bg-scholar hover:text-scholar-foreground focus-ring"
+              aria-label="پروفایل گوگل اسکالر"
+              title="Google Scholar"
+              className="group inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-6 text-sm font-medium text-background transition-all duration-300 hover:-translate-y-0.5 hover:bg-scholar hover:text-scholar-foreground hover:shadow-[0_12px_30px_-12px_rgba(66,133,244,0.55)] focus-ring"
             >
-              <GraduationCap className="h-4 w-4" />
+              <ScholarIcon className="h-4 w-4 shrink-0" />
               {profileFa.buttons.scholar}
+              <ArrowUpLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            <a
+              href={profileFa.orcidUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="پروفایل ORCID"
+              title="ORCID"
+              className="group inline-flex h-11 items-center gap-2 rounded-full border border-border bg-transparent px-6 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-[#A6CE39]/60 hover:bg-[#A6CE39]/10 hover:shadow-[0_12px_30px_-12px_rgba(166,206,57,0.55)] focus-ring"
+            >
+              <OrcidIcon className="h-4 w-4 shrink-0" />
+              ORCID
               <ArrowUpLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
             <a

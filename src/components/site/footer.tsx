@@ -6,12 +6,11 @@ import {
   Mail,
   Linkedin,
   Youtube,
-  GraduationCap,
-  Fingerprint,
   ArrowUp,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { profile, profileFa } from "@/lib/data/content";
+import { OrcidIcon, ScholarIcon } from "@/components/site/brand-icons";
 
 type Variant = "en-home" | "en-research" | "fa-home";
 
@@ -54,8 +53,8 @@ const socialIcons: Record<
   Email: Mail,
   LinkedIn: Linkedin,
   YouTube: Youtube,
-  "Google Scholar": GraduationCap,
-  ORCID: Fingerprint,
+  "Google Scholar": ScholarIcon,
+  ORCID: OrcidIcon,
 };
 
 export function Footer({ variant }: { variant: Variant }) {

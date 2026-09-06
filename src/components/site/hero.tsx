@@ -2,9 +2,10 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { ArrowUpRight, FileText, GraduationCap } from "lucide-react";
+import { ArrowUpRight, FileText } from "lucide-react";
 import { profile } from "@/lib/data/content";
 import { Magnetic } from "@/components/site/magnetic";
+import { OrcidIcon, ScholarIcon } from "@/components/site/brand-icons";
 
 export function Hero() {
   const imgRef = React.useRef<HTMLDivElement>(null);
@@ -85,10 +86,26 @@ export function Hero() {
                 href={profile.scholarUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-6 text-sm font-medium text-background transition-colors duration-300 hover:bg-scholar hover:text-scholar-foreground focus-ring"
+                aria-label="Google Scholar profile"
+                title="Google Scholar"
+                className="group inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-6 text-sm font-medium text-background transition-all duration-300 hover:-translate-y-0.5 hover:bg-scholar hover:text-scholar-foreground hover:shadow-[0_12px_30px_-12px_rgba(66,133,244,0.55)] focus-ring"
               >
-                <GraduationCap className="h-4 w-4" />
+                <ScholarIcon className="h-4 w-4 shrink-0" />
                 Google Scholar
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </Magnetic>
+            <Magnetic strength={8}>
+              <a
+                href={profile.orcidUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="ORCID profile"
+                title="ORCID"
+                className="group inline-flex h-11 items-center gap-2 rounded-full border border-border bg-transparent px-6 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-[#A6CE39]/60 hover:bg-[#A6CE39]/10 hover:shadow-[0_12px_30px_-12px_rgba(166,206,57,0.55)] focus-ring"
+              >
+                <OrcidIcon className="h-4 w-4 shrink-0" />
+                ORCID
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </Magnetic>
@@ -96,7 +113,7 @@ export function Hero() {
               <a
                 href={profile.cvUrl}
                 target="_blank"
-                className="group inline-flex h-11 items-center gap-2 rounded-full border border-border bg-transparent px-6 text-sm font-medium text-foreground transition-colors duration-300 hover:border-foreground/40 hover:bg-muted focus-ring"
+                className="group inline-flex h-11 items-center gap-2 rounded-full border border-border bg-transparent px-6 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/40 hover:bg-muted hover:shadow-[0_12px_30px_-12px_rgba(0,0,0,0.25)] focus-ring"
               >
                 <FileText className="h-4 w-4" />
                 CV

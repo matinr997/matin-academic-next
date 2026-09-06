@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, PenLine } from "lucide-react";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
@@ -65,8 +66,20 @@ export default function BlogPage() {
                 <Reveal key={post.slug} delay={i * 60}>
                   <Link
                     href={`/blog.html/${post.slug}`}
-                    className="group relative block overflow-hidden rounded-2xl border border-border bg-card p-6 elevate transition-all duration-500 hover:-translate-y-1 hover:border-foreground/15 hover:shadow-[0_22px_50px_-28px_rgba(0,0,0,0.25)] focus-ring sm:p-8"
+                    className="group relative block overflow-hidden rounded-2xl border border-border bg-card elevate transition-all duration-500 hover:-translate-y-1 hover:border-foreground/15 hover:shadow-[0_22px_50px_-28px_rgba(0,0,0,0.25)] focus-ring"
                   >
+                    {post.image && (
+                      <span className="relative block h-48 w-full overflow-hidden sm:h-56">
+                        <Image
+                          src={post.image}
+                          alt={post.imageAlt ?? post.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 768px"
+                          className="object-cover transition-transform duration-700 ease-out-soft group-hover:scale-[1.03]"
+                        />
+                      </span>
+                    )}
+                    <span className="block p-6 sm:p-8">
                     <span
                       className="pointer-events-none absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-scholar transition-transform duration-500 ease-out-soft group-hover:scale-x-100"
                       aria-hidden
@@ -96,6 +109,7 @@ export default function BlogPage() {
                         </span>
                       ))}
                     </div>
+                    </span>
                   </Link>
                 </Reveal>
               ))}

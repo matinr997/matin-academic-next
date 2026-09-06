@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays, Clock } from "lucide-react";
 import { Header } from "@/components/site/header";
@@ -113,6 +114,21 @@ export default async function BlogPostPage({
               ))}
             </div>
           </Reveal>
+
+          {post.image && (
+            <Reveal delay={100}>
+              <span className="relative mt-10 block h-64 w-full overflow-hidden rounded-2xl border border-border sm:h-96">
+                <Image
+                  src={post.image}
+                  alt={post.imageAlt ?? post.title}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  className="object-cover"
+                />
+              </span>
+            </Reveal>
+          )}
 
           <Reveal delay={130}>
             <div className="mt-10 space-y-6 border-t border-border pt-10">

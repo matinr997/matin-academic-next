@@ -293,6 +293,9 @@ export interface BlogPost {
   date: string;
   readingTime: string;
   tags: string[];
+  /** Cover image path, e.g. "/images/blog/peplau.jpg". Omit for no image. */
+  image?: string;
+  imageAlt?: string;
   paragraphs: string[];
 }
 

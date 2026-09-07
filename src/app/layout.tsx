@@ -70,9 +70,12 @@ export const metadata: Metadata = {
     google: "c470622fe7671ca5",
   },
   icons: {
-    icon: "/images/favicon.jpg",
-    shortcut: "/images/favicon.jpg",
-    apple: "/images/favicon.jpg",
+    icon: [
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon-48.png",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     title: "Matin Roosta | Academic Portfolio",

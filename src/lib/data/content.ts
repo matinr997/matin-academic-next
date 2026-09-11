@@ -30,6 +30,8 @@ export const profile = {
   persianUrl: "/index-fa.html",
   homeUrl: "/",
   researchUrl: "/research.html",
+  aboutUrl: "/about.html",
+  blogUrl: "/blog.html",
   // Footer bios differ per page — preserved exactly
   footerBioHome:
     "Faculty of Nursing and Midwifery, Hormozgan University of Medical Sciences (HUMS), Bandar Abbas, Iran.",
@@ -272,6 +274,63 @@ export const coursesFa: Course[] = [
 export const faSectionTitles = {
   research: "مقالات پژوهشی",
   teaching: "سوابق تدریس",
+};
+
+/* ------------------------------------------------------------------ */
+/* Brand band (home mid-page, dark navy) — numbers must stay honest.   */
+/* ------------------------------------------------------------------ */
+
+export const brandBand = {
+  badge: "Nurse · Researcher · Faculty Member",
+  name: "Matin Roosta",
+  bio: "I am a nurse, educator, and researcher passionate about patient care, nursing education, and the application of artificial intelligence to advance healthcare. I also share what I learn on my YouTube channel, Coffee and Nursing.",
+  stats: [
+    { value: 1, suffix: "", label: "Peer-reviewed publications" },
+    { value: 3, suffix: "", label: "Courses taught" },
+    { value: 4, suffix: "+", label: "Years of clinical experience" },
+  ],
+};
+
+/* ------------------------------------------------------------------ */
+/* About page                                                          */
+/* ------------------------------------------------------------------ */
+
+export const aboutPage = {
+  badge: "About me",
+  titlePre: "Nurse, educator,",
+  titleAccent: "researcher.",
+  story: [
+    "I started my career at the bedside — assessing, stabilizing, and treating critically ill patients in emergency settings at Imam Reza Hospital in Bandar Abbas. Those years in emergency and critical care shaped how I think about nursing: practical, evidence-based, and deeply human.",
+    "Today I am a faculty member at the Department of Prehospital Emergency Medicine, Hormozgan University of Medical Sciences, where I train future nurses and emergency medical professionals. My research focuses on chronic disease management in older adults — especially diabetes self-care — alongside critical care, geriatric nursing, and the application of artificial intelligence in healthcare.",
+    "Through my YouTube channel, Coffee and Nursing, I share clinical lessons, nursing education, and honest reflections from practice — so students and nurses everywhere can learn from real experience, not just textbooks.",
+  ],
+  timeline: [
+    {
+      period: "2024 — Present",
+      title: "Faculty Member, Prehospital Emergency Medicine",
+      place: "Hormozgan University of Medical Sciences, Bandar Abbas",
+    },
+    {
+      period: "2022 — 2024",
+      title: "Emergency Nurse",
+      place: "Imam Reza Hospital, Bandar Abbas",
+    },
+    {
+      period: "Master of Science",
+      title: "MS in Nursing Science",
+      place: "HUMS — School of Nursing and Midwifery",
+    },
+    {
+      period: "Bachelor of Science",
+      title: "BS in Nursing Science",
+      place: "HUMS — School of Nursing and Midwifery",
+    },
+  ],
+  collab: [
+    "Guest lectures & workshops",
+    "Research collaboration",
+    "Educational content & speaking",
+  ],
 };
 
 /* ------------------------------------------------------------------ */

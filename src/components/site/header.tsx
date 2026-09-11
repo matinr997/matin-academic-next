@@ -7,26 +7,26 @@ import { cn } from "@/lib/utils";
 import { profile, profileFa } from "@/lib/data/content";
 import { ThemeToggle } from "@/components/site/theme-toggle";
 
-type Variant = "en-home" | "en-about" | "en-blog" | "fa-home";
+type Variant = "en-home" | "en-research" | "en-blog" | "fa-home";
 
 const navByVariant: Record<
   Variant,
   { label: string; href: string }[]
 > = {
   "en-home": [
-    { label: "About", href: "/about.html" },
+    { label: "Research", href: "/research.html" },
     { label: "Publications", href: "/#publications" },
     { label: "Teaching", href: "/#teaching" },
     { label: "Blog", href: "/blog.html" },
   ],
-  "en-about": [
-    { label: "About", href: "/about.html" },
+  "en-research": [
+    { label: "Research", href: "/research.html" },
     { label: "Publications", href: "/#publications" },
     { label: "Teaching", href: "/#teaching" },
     { label: "Blog", href: "/blog.html" },
   ],
   "en-blog": [
-    { label: "About", href: "/about.html" },
+    { label: "Research", href: "/research.html" },
     { label: "Publications", href: "/#publications" },
     { label: "Teaching", href: "/#teaching" },
     { label: "Blog", href: "/blog.html" },
@@ -45,8 +45,8 @@ export function Header({ variant }: { variant: Variant }) {
   const nav = navByVariant[variant];
   const activePath = isFa
     ? null
-    : variant === "en-about"
-    ? "/about.html"
+    : variant === "en-research"
+    ? "/research.html"
     : variant === "en-blog"
     ? "/blog.html"
     : "/";

@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { profile, profileFa } from "@/lib/data/content";
 import { OrcidIcon, ScholarIcon } from "@/components/site/brand-icons";
 
-type Variant = "en-home" | "en-about" | "en-blog" | "fa-home";
+type Variant = "en-home" | "en-research" | "en-blog" | "fa-home";
 
 function socialLinks(variant: Variant) {
   const isFa = variant === "fa-home";
@@ -28,15 +28,15 @@ function socialLinks(variant: Variant) {
 
 const navByVariant: Record<Variant, { label: string; href: string }[]> = {
   "en-home": [
-    { label: "About", href: "/about.html" },
+    { label: "Research", href: "/research.html" },
     { label: "Publications", href: "/#publications" },
     { label: "Teaching", href: "/#teaching" },
     { label: "Blog", href: "/blog.html" },
   ],
-  // about.html footer nav includes Home
-  "en-about": [
+  // research.html footer nav includes Home
+  "en-research": [
     { label: "Home", href: "/" },
-    { label: "About", href: "/about.html" },
+    { label: "Research", href: "/research.html" },
     { label: "Publications", href: "/#publications" },
     { label: "Teaching", href: "/#teaching" },
     { label: "Blog", href: "/blog.html" },
@@ -44,7 +44,7 @@ const navByVariant: Record<Variant, { label: string; href: string }[]> = {
   // blog.html footer nav includes Home
   "en-blog": [
     { label: "Home", href: "/" },
-    { label: "About", href: "/about.html" },
+    { label: "Research", href: "/research.html" },
     { label: "Publications", href: "/#publications" },
     { label: "Teaching", href: "/#teaching" },
     { label: "Blog", href: "/blog.html" },
@@ -73,7 +73,7 @@ export function Footer({ variant }: { variant: Variant }) {
   const brand = isFa ? profileFa.name : profile.name.toUpperCase();
   const bio = isFa
     ? profileFa.footerBio
-    : variant === "en-about"
+    : variant === "en-research"
     ? profile.footerBioResearch
     : profile.footerBioHome;
   const nav = navByVariant[variant];

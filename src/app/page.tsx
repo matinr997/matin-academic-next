@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/site/header";
 import { Hero } from "@/components/site/hero";
-import { BrandBand } from "@/components/site/brand-band";
 import { Research } from "@/components/site/research";
 import { Publications } from "@/components/site/publications";
 import { Teaching } from "@/components/site/teaching";
@@ -55,7 +54,6 @@ export default function Home() {
       <Header variant="en-home" />
       <main className="flex-1">
         <Hero />
-        <BrandBand />
         <Research />
         <Publications />
         <Teaching />

@@ -57,10 +57,13 @@ export function Hero() {
         <div className="lg:col-span-7">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-muted-foreground opacity-0 [animation:hero-fade_0.7s_cubic-bezier(0.16,1,0.3,1)_0.05s_forwards]">
             <span className="h-1.5 w-1.5 rounded-full bg-scholar" aria-hidden />
-            {profile.badge}
+            <span className="font-semibold text-foreground">Matin Roosta</span>
+            <span className="text-border" aria-hidden>•</span>
+            <span>{profile.badge}</span>
           </span>
 
           <h1 className="display mt-7 text-[2.75rem] leading-[1.04] tracking-tight text-foreground sm:text-6xl lg:text-[4.5rem]">
+            <span className="sr-only">Matin Roosta — </span>
             <span className="block overflow-hidden">
               <span className="inline-block opacity-0 [animation:hero-rise_0.8s_cubic-bezier(0.16,1,0.3,1)_0.12s_forwards]">
                 {profile.heroHeadlinePre}{" "}

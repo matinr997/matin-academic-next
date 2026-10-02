@@ -74,10 +74,13 @@ function PersianHero() {
         <div className="lg:col-span-7">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-muted-foreground opacity-0 [animation:hero-fade_0.7s_cubic-bezier(0.16,1,0.3,1)_0.05s_forwards]">
             <span className="h-1.5 w-1.5 rounded-full bg-scholar" aria-hidden />
-            {profileFa.badge}
+            <span className="font-semibold text-foreground">متین روستا</span>
+            <span className="text-border" aria-hidden>•</span>
+            <span>{profileFa.badge}</span>
           </span>
 
           <h1 className="display-fa mt-7 text-[2.75rem] text-foreground sm:text-6xl lg:text-[4.25rem]">
+            <span className="sr-only">متین روستا — </span>
             <span className="block overflow-hidden">
               <span className="inline-block opacity-0 [animation:hero-rise_0.8s_cubic-bezier(0.16,1,0.3,1)_0.12s_forwards]">
                 {profileFa.heroHeadlinePre}{" "}

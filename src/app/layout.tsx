@@ -33,19 +33,27 @@ const vazirmatn = Vazirmatn({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://matin-academic-next-nkah.vercel.app"),
-  title: "Matin Roosta | Academic Portfolio",
+  title: {
+    default: "Matin Roosta | Academic Portfolio",
+    template: "%s | Matin Roosta",
+  },
   description:
     "Matin Roosta — nurse, educator, and researcher. Faculty member at Hormozgan University of Medical Sciences working on critical care, geriatric nursing, diabetes self-care, and AI in healthcare.",
   keywords: [
     "Matin Roosta",
+    "متین روستا",
+    "Matin Roosta-ye Abkenar",
+    "متین روستای آبکنار",
     "nursing research",
     "critical care nursing",
     "gerontology",
+    "geriatric nursing",
     "diabetes self-care",
     "Peplau theory",
     "health informatics",
     "AI in nursing",
     "Hormozgan University of Medical Sciences",
+    "دانشگاه علوم پزشکی هرمزگان",
   ],
   authors: [{ name: "Matin Roosta", url: "https://matin-academic-next-nkah.vercel.app" }],
   creator: "Matin Roosta",
@@ -80,7 +88,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Matin Roosta | Academic Portfolio",
     description:
-      "Nurse, educator, and researcher. Publications, research, and teaching in nursing care, aging, AI in healthcare, and chronic disease management.",
+      "Matin Roosta — Nurse, educator, and researcher. Publications, research, and teaching in nursing care, aging, AI in healthcare, and chronic disease management.",
     url: "/",
     siteName: "Matin Roosta — Academic Portfolio",
     locale: "en_US",

@@ -21,8 +21,15 @@ function PersonJsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Matin Roosta-ye Abkenar",
-    alternateName: "Matin Roosta",
+    name: "Matin Roosta",
+    givenName: "Matin",
+    familyName: "Roosta",
+    additionalName: "Roosta-ye Abkenar",
+    alternateName: [
+      "Matin Roosta-ye Abkenar",
+      "متین روستا",
+      "متین روستای آبکنار",
+    ],
     jobTitle: ["Nurse", "Researcher", "Faculty Member"],
     description: profile.shortBio,
     image: "https://matin-academic-next-nkah.vercel.app/images/profile.jpg",
@@ -31,12 +38,21 @@ function PersonJsonLd() {
     affiliation: {
       "@type": "Organization",
       name: "Hormozgan University of Medical Sciences",
+      alternateName: "دانشگاه علوم پزشکی هرمزگان",
     },
     sameAs: [
       profile.scholarUrl,
       profile.orcidUrl,
       profile.linkedinUrl,
       profile.youtubeUrl,
+    ],
+    knowsAbout: [
+      "Nursing Research",
+      "Critical Care Nursing",
+      "Geriatric Nursing",
+      "Diabetes Self-Care",
+      "Peplau Theory",
+      "Artificial Intelligence in Healthcare",
     ],
   };
   return (

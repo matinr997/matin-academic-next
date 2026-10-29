@@ -103,6 +103,32 @@ export interface Publication {
 
 export const publications: Publication[] = [
   {
+    id: "social-support-diabetes-distress-2026",
+    title:
+      "The moderating role of social support in the relationship between diabetes distress and psychological well-being among older adults with type 2 diabetes: a cross-sectional study protocol.",
+    citation: "Health Science Reports • 2026; 9(11): e73427",
+    doi: "10.1002/hsr2.73427",
+    doiUrl: "https://doi.org/10.1002/hsr2.73427",
+    abstract: [
+      {
+        label: "Background and Aims",
+        text: "Type 2 diabetes imposes a considerable psychological burden on older adults, including elevated diabetes distress and diminished psychological well-being. Social support may buffer the harmful mental-health effects of chronic disease-related stress, yet whether it moderates the link between diabetes distress and psychological well-being remains rarely examined among older Iranian adults with type 2 diabetes. This protocol aims to determine the moderating role of social support in that relationship in this population.",
+      },
+      {
+        label: "Methods",
+        text: "This descriptive-analytic cross-sectional protocol will recruit 300 adults aged 60 years or above with type 2 diabetes from the Bandar Abbas Diabetes Clinic through simple random sampling from the clinic electronic registry. Trained interviewers will administer a demographic and clinical form, the age-adjusted Charlson Comorbidity Index, the PAID-5 (diabetes distress), the MSSS-5 (social support), and the WHO-5 Well-Being Index in person or by telephone using identical structured interviews. Hierarchical multiple regression will test the diabetes distress by social support interaction on WHO-5 scores, in an unadjusted model and a model adjusted for a pre-specified demographic and clinical covariate set, with heteroscedasticity-robust standard errors, bootstrapped confidence intervals, and simple-slopes and Johnson-Neyman probing. Missing data will be handled with multiple imputation. Analyses will use IBM SPSS Statistics version 28 with two-sided tests at α = 0.05.",
+      },
+      {
+        label: "Results",
+        text: "As a protocol, no empirical results are reported. The completed study will yield estimates of diabetes distress, social support, and psychological well-being levels, their bivariate associations, and the moderation effect with appropriate uncertainty quantification.",
+      },
+      {
+        label: "Conclusion",
+        text: "The findings are expected to provide a scientific basis for nursing and psychosocial interventions that strengthen social support networks to protect the psychological well-being of older adults with type 2 diabetes. Ethical approval has been obtained (IR.HUMS.REC.1405.013); written or audio-recorded verbal informed consent will be obtained from all participants.",
+      },
+    ],
+  },
+  {
     id: "peplau-2025",
     title:
       "Determining the impact of a self-care educational program designed based on the Peplau theory on adherence to treatment and self-care in elderly patients with diabetes.",
@@ -254,6 +280,13 @@ export interface PublicationFa {
 }
 
 export const publicationsFa: PublicationFa[] = [
+  {
+    id: "social-support-diabetes-distress-2026",
+    title:
+      "نقش تعدیل‌کننده حمایت اجتماعی در رابطه میان پریشانی دیابت و بهزیستی روان‌شناختی در سالمندان مبتلا به دیابت نوع ۲: پروتکل یک مطالعه مقطعی.",
+    doi: "10.1002/hsr2.73427",
+    doiUrl: "https://doi.org/10.1002/hsr2.73427",
+  },
   {
     id: "peplau-2025",
     title:
